@@ -1,0 +1,13 @@
+node_modules
+.DS_Store
+# dist
+dist-ssr
+*.local
+.npmrc
+.idea
+build
+demo-build
+.pabotsuitenames
+src/tests/results/
+src/tests/resources/scripts/local-env.sh
+__pycache__
