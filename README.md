@@ -1,6 +1,6 @@
 ## Getting started
 
-NodeJS must be installed on the computer to run the demo application https://nodejs.org/en/
+Node must be installed on the computer to run the demo application https://nodejs.org/en/
 
 
 ### 1. Download example and install dependencies
