@@ -1,14 +1,35 @@
+## Getting started
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-yarn or npm install
-
-#then
-yarn run dev or npm run dev
+NodeJS must be installed on the computer to run the demo application https://nodejs.org/en/
 
 
-`
+### 1. Download example and install dependencies
+
+
+Clone this repository:
+
+
+```
+git clone git@github.com:trustedshops/connect-app-demo.git
+```
+
+
+Install npm dependencies:
+
+
+```
+cd connect-app-demo
+npm install
+or
+yarn install
+```
+
+
+then
+
+```
+yarn run dev
+or
+npm run dev
+```
 
