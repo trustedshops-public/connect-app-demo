@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // /* eslint-disable @typescript-eslint/no-explicit-any */
 import Button, { ButtonThemes } from '@/UI/components/controls/buttun'
 import { h, Fragment } from 'preact'
@@ -29,7 +30,7 @@ const InjectScript = memo(({ src }: { src: string }) => {
   )
 })
 
-export const ConnectingTratsedShop: FC = () => {
+export const ConnectingTrustedShop: FC = () => {
   const [isShowConnectorPlugin, setIsShowConnectorPlugin] = useState(false)
   const [unsub, setunsub] = useState<{ usub: any | null } | undefined>({ usub: null })
 
