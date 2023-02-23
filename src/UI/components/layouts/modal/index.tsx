@@ -1,6 +1,6 @@
 import { ComponentChildren, VNode, h, Fragment } from 'preact'
 import { FC } from 'preact/compat'
-import BackgroundCard from '@/components/layouts/backgroundCard'
+import BackgroundCard from '@/UI/components/layouts/backgroundCard'
 
 interface Props {
   children?: ComponentChildren

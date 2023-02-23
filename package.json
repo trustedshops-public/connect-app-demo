@@ -1,20 +1,12 @@
 {
-  "name": "etrusted-connector",
+  "name": "connect-app-demo",
   "version": "0.0.1",
   "scripts": {
     "dev": "vite --mode development",
     "build:qa": "cross-env VITE_USE_MOCK_BASELAYER=0 vite build --mode development",
     "build": "cross-env VITE_USE_MOCK_BASELAYER=0 vite build --mode production",
-    "build:license": "cross-env VITE_USE_MOCK_BASELAYER=0 vite build && npx license-checker --production --json --customPath licence-template.json > src/licences.json",
-    "serve": "vite preview",
     "lint": "eslint src/**/*.{ts,tsx} --fix",
-    "format": "prettier --write src/**/*.{ts,tsx}",
-    "zip": "bestzip eTrustedConnector.zip eTrustedConnector/*",
-    "demo:dev": "cross-env VITE_USE_MOCK_BASELAYER=0 vite build && start demo/index.html",
-    "test-install": "./src/tests/resources/scripts/install.sh",
-    "test": "./src/tests/resources/scripts/run.sh",
-    "test-local": "./src/tests/resources/scripts/run-local.sh",
-    "dev:test": "vite --mode test"
+    "format": "prettier --write src/**/*.{ts,tsx}"
   },
   "dependencies": {
     "@hookform/resolvers": "2.9.10",
@@ -53,6 +45,7 @@
     "vite": "4.0.1",
     "vite-plugin-environment": "1.1.3"
   },
+  "license": "MIT",
   "eslintConfig": {
     "extends": "preact"
   },

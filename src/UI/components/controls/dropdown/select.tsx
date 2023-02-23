@@ -1,7 +1,7 @@
 import { ComponentChildren, h } from 'preact'
 import { useRef, useState } from 'preact/hooks'
 import { FC } from 'preact/compat'
-import { ChevronDownIcon } from '@/components/layouts/icons'
+import { ChevronDownIcon } from '@/UI/components/layouts/icons'
 
 interface Props {
   children: ComponentChildren
