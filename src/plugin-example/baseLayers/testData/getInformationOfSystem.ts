@@ -1,4 +1,4 @@
-import { DEV, TEST } from '../baseLayerDev'
+import { DEV, TEST } from '../baseLayer'
 
 export const getInformationOfSystem = (
   defaultEnv?: string

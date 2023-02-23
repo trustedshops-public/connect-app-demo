@@ -1,10 +1,8 @@
-import { DEV, TEST } from '../baseLayer'
+import { dispatchAction, EVENTS } from '@/plugin-example/eventsLib'
 
-export const getLocale = (defaultEnv?: string): string => {
-  switch (process.env.locale || defaultEnv) {
-    case DEV: // value for 'development'
-      return 'en-GB'
-    case TEST: //value for 'test'
+export const locales = (lg: string): string => {
+  switch (lg) {
+    case 'en-GB':
       return 'en-GB'
     case 'de-DE':
       return 'de-DE'
@@ -24,4 +22,12 @@ export const getLocale = (defaultEnv?: string): string => {
     default:
       return 'en-GB'
   }
+}
+
+export function getLocale() {
+  console.log('Demo: GET_LOCALE:', 'en-GB')
+  dispatchAction({
+    action: EVENTS.SET_LOCALE,
+    payload: locales('en-GB'),
+  })
 }

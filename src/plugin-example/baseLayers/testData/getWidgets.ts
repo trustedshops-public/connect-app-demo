@@ -1,5 +1,5 @@
 import { IWidgets } from '../types'
-import { DEV, TEST } from '../baseLayerDev'
+import { DEV, TEST } from '../baseLayer'
 
 export const getWidgets = (defaultEnv?: string): IWidgets => {
   switch (process.env.widgets || defaultEnv) {

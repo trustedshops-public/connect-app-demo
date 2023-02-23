@@ -3,7 +3,7 @@ import Button, { ButtonThemes } from '@/UI/components/controls/buttun'
 import { h, Fragment } from 'preact'
 import { route } from 'preact-router'
 import { FC, memo, useEffect, useRef, useState } from 'preact/compat'
-import { baseLayerDev } from './baseLayers/baseLayerDev'
+import { baseLayer } from './baseLayers/baseLayer'
 import { dispatchAction, EVENTS } from './eventsLib'
 
 const InjectScript = memo(({ src }: { src: string }) => {
@@ -41,7 +41,7 @@ export const ConnectingTratsedShop: FC = () => {
       dispatchAction({ action: EVENTS.CLOSE_CONNECTOR, payload: null })
       route('/', true)
     } else {
-      const usub = baseLayerDev()
+      const usub = baseLayer()
       setunsub({ usub })
     }
     setIsShowConnectorPlugin(include => !include)

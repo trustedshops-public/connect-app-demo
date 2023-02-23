@@ -49,7 +49,7 @@ module.exports = {
     ],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
-    'no-console': 2,
+    // 'no-console': 2,
     '@typescript-eslint/no-var-requires': 0,
     'react-hooks/exhaustive-deps': 0,
   },

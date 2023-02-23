@@ -1,5 +1,5 @@
 import { ITrustbadge } from '../types'
-import { DEV, TEST } from '../baseLayerDev'
+import { DEV, TEST } from '../baseLayer'
 
 export const getTrustbadge = (id: string, defaultEnv?: string | number): ITrustbadge | null => {
   switch (process.env.trustbadge || defaultEnv) {

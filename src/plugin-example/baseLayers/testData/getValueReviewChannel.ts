@@ -1,4 +1,4 @@
-import { DEV, TEST } from '../baseLayerDev'
+import { DEV, TEST } from '../baseLayer'
 export const getValueReviewChannel = (defaultEnv?: string): { [key: string]: string } | null => {
   switch (process.env.reviewChannel || defaultEnv) {
     case DEV: // value for dev

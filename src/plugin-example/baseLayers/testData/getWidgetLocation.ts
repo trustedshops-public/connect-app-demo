@@ -1,4 +1,4 @@
-import { DEV, TEST } from '../baseLayerDev'
+import { DEV, TEST } from '../baseLayer'
 export const getWidgetLocation = (defaultEnv?: string): { [key: string]: string }[] => {
   switch (process.env.widgetLocation || defaultEnv) {
     case DEV: // value for develoment
