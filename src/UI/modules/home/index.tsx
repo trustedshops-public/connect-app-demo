@@ -1,4 +1,4 @@
-import { ConnectingTrustedShop } from '@/plugin-example/connectingTrustedShop'
+import { ConnectingTrustedShop } from '@/example-of-system-integration/connectingTrustedShop'
 import { h } from 'preact'
 import { FC } from 'preact/compat'
 
