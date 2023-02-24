@@ -1,5 +1,5 @@
 import { EVENTS } from '@/plugin-example/eventsLib'
-import { sendingNotification } from '../../baseLayer'
+import { sendingNotification } from '../NOTIFICATION'
 
 export function saveCredentials(event: { payload: { clientId: string; clientSecret: string } }) {
   console.log('Demo: SAVE_CREDENTIALS', event.payload)

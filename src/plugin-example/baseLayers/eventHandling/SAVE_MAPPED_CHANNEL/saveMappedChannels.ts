@@ -1,6 +1,6 @@
 import { dispatchAction, EVENTS } from '@/plugin-example/eventsLib'
-import { sendingNotification } from '../../baseLayer'
 import { IMappedChannel } from '../../types'
+import { sendingNotification } from '../NOTIFICATION'
 
 export function saveMappedChannels(event: { payload: IMappedChannel[] }) {
   try {
