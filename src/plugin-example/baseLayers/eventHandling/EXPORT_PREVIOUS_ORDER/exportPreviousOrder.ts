@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { dispatchAction, EVENTS } from '@/plugin-example/eventsLib'
-import { sendingNotification } from '../../baseLayer'
+import { sendingNotification } from '../NOTIFICATION'
 
 export function exportPreviousOrder(event: { payload: any }) {
   console.log('Demo: EXPORT_PREVIOUS_ORDER', event.payload)

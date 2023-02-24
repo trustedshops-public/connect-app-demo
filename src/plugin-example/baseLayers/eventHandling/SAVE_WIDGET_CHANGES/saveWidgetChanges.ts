@@ -1,6 +1,6 @@
 import { dispatchAction, EVENTS } from '@/plugin-example/eventsLib'
-import { sendingNotification } from '../../baseLayer'
 import { IWidgets } from '../../types'
+import { sendingNotification } from '../NOTIFICATION'
 
 export function saveWidgetChanges(event: { payload: IWidgets }) {
   try {

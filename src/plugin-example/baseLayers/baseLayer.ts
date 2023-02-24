@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-console */
-import { dispatchAction, EVENTS, registerEvents } from '../eventsLib'
+import { EVENTS, registerEvents } from '../eventsLib'
 import {
   activateProductReviewForChannel,
   deactivateProductReviewForChannel,
@@ -24,28 +23,11 @@ import {
   saveUseEstimatedDeliveryDateForChannel,
   saveUseEventsByOrderStarusForChannel,
   saveWidgetChanges,
-} from './eventHandlingFunctions'
+} from './eventHandling'
 
 export const DEV = 'development'
 export const TEST = 'test'
 
-export const sendingNotification = (
-  event: string,
-  message: string,
-  status: 'error' | 'success',
-  type: string
-): void => {
-  console.log('EVENTS.NOTIFICATION')
-  dispatchAction({
-    action: EVENTS.NOTIFICATION,
-    payload: {
-      event,
-      message,
-      status,
-      type,
-    },
-  })
-}
 export const baseLayer = (): any => {
   console.log('Base Layer started')
 

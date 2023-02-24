@@ -1,6 +1,6 @@
 import { dispatchAction, EVENTS } from '@/plugin-example/eventsLib'
-import { sendingNotification } from '../../baseLayer'
 import { ITrustbadge } from '../../types'
+import { sendingNotification } from '../NOTIFICATION'
 
 export function saveTrustbadgeConfiguration(event: { payload: ITrustbadge }) {
   console.log('Demo: SAVE_TRUSTBADGE_CONFIGURATION', event.payload)

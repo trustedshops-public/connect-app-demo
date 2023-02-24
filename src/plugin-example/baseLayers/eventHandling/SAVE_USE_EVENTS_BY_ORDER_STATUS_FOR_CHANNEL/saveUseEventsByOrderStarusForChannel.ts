@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { dispatchAction, EVENTS } from '@/plugin-example/eventsLib'
-import { sendingNotification } from '../../baseLayer'
+import { sendingNotification } from '../NOTIFICATION'
 
 export function saveUseEventsByOrderStarusForChannel(event: { payload: any }) {
   try {
