@@ -1,3 +1,4 @@
+import { api } from '@/database-container/api/api'
 import { dispatchAction, EVENTS } from '@/example-of-system-integration/eventsLib'
 
 export function getSalesChannelsProvided() {
@@ -5,6 +6,6 @@ export function getSalesChannelsProvided() {
 
   dispatchAction({
     action: EVENTS.SET_SALES_CHANNELS_PROVIDED,
-    payload: null,
+    payload: api.getSalesChannels() || [],
   })
 }

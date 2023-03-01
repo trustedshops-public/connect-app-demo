@@ -11,6 +11,9 @@ export interface ITrustbadgeChildren {
 }
 
 export interface IWidgets {
+  id: string
+  salesChannelRef: string
+  eTrustedChannelRef: string
   children: Array<{
     tag?: string
     attributes?: {

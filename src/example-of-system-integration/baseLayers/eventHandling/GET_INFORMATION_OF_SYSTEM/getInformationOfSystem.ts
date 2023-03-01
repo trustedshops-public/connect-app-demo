@@ -1,8 +1,8 @@
-import { baseLayerData } from '@/example-of-system-integration/data-config'
+import { api } from '@/database-container/api/api'
 import { dispatchAction, EVENTS } from '@/example-of-system-integration/eventsLib'
 
 export function getInformationOfSystem() {
-  const infoSystem = baseLayerData.infoSystem
+  const infoSystem = api.getSystemInfo() //fetch api
 
   console.log('Demo: GET_INFORMATION_OF_SYSTEM. Answer:', infoSystem)
 

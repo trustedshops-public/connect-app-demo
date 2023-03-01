@@ -1,3 +1,4 @@
+import { api } from '@/database-container/api/api'
 import { dispatchAction, EVENTS } from '@/example-of-system-integration/eventsLib'
 
 export function getMappedChannels() {
@@ -5,6 +6,6 @@ export function getMappedChannels() {
 
   dispatchAction({
     action: EVENTS.SET_MAPPED_CHANNELS,
-    payload: [],
+    payload: api.getMappedChannels(),
   })
 }

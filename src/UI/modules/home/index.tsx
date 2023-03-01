@@ -1,5 +1,5 @@
 import { ConnectingTrustedShop } from '@/example-of-system-integration/connectingTrustedShop'
-import { baseLayerData } from '@/example-of-system-integration/data-config'
+import { baseLayerData } from '@/database-container/data-config'
 import { h } from 'preact'
 import { FC } from 'preact/compat'
 
