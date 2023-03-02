@@ -10,7 +10,6 @@ export const db = new LowSync<BaseLayerDataType>(adapter)
 export const DatabaseContainer: FC = ({ children }) => {
   useEffect(() => {
     db.read()
-    console.log('file: DatabaseContainer.tsx:19  useEffect  db:', db)
     db.data ||= { ...baseLayerData }
     db.write()
   }, [])

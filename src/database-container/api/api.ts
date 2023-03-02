@@ -3,7 +3,7 @@ import {
   ITrustbadge,
   IWidgets,
 } from '@/example-of-system-integration/baseLayers/types'
-import { BaseLayerDataType } from '../data-config'
+import { baseLayerData, BaseLayerDataType, Estimatepayload } from '../data-config'
 import { db } from '../DatabaseContainer'
 
 export const api = {
@@ -12,6 +12,14 @@ export const api = {
   },
   getLocale: () => {
     return db.data?.locale
+  },
+  getCredentials: () => {
+    return db.data?.credentials
+  },
+  postCredentials: (credentials: { clientId: string; clientSecret: string }) => {
+    db.data = { ...(db.data as BaseLayerDataType), credentials }
+    db.write()
+    return credentials
   },
   getSalesChannels: () => {
     return db.data?.salesChannels
@@ -65,8 +73,14 @@ export const api = {
     )
   },
 
+  getWidgetLocation: (): Array<{ id: string; name: string }> => {
+    return db.data?.widgetLocation || []
+  },
+  getAvailableProductIdenfiers: (): Array<{ id: string; name: string }> => {
+    return db.data?.productIdentifiers || []
+  },
+
   postWidgets: (widgets: IWidgets): IWidgets => {
-    db.read()
     const finded = db.data?.widgets.find(
       item =>
         (item.id === widgets.id || item.eTrustedChannelRef === widgets.eTrustedChannelRef) &&
@@ -92,5 +106,141 @@ export const api = {
     db.write()
 
     return widgets
+  },
+
+  getProductReviewForChannel: (payload: {
+    salesChannelRef: string
+    eTrustedChannelRef: string
+  }) => {
+    return (
+      db.data?.productReview.find(
+        item =>
+          item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+          item.salesChannelRef === payload.salesChannelRef
+      ) || null
+    )
+  },
+
+  activateProductReviewForChannel: (productReviewChannel: IMappedChannel): IMappedChannel => {
+    const finded = db.data?.productReview.find(
+      item =>
+        item.eTrustedChannelRef === productReviewChannel.eTrustedChannelRef &&
+        item.salesChannelRef === productReviewChannel.salesChannelRef
+    )
+    if (finded) return productReviewChannel
+    db.data?.productReview.push(productReviewChannel)
+    db.write()
+
+    return productReviewChannel
+  },
+  deactivateProductReviewForChannel: (payload: {
+    salesChannelRef: string
+    eTrustedChannelRef: string
+  }) => {
+    const felteredProductReview = db.data?.productReview.filter(
+      item =>
+        item.eTrustedChannelRef !== payload.eTrustedChannelRef &&
+        item.salesChannelRef !== payload.salesChannelRef
+    )
+
+    db.data = {
+      ...(db.data as BaseLayerDataType),
+      productReview: felteredProductReview as IMappedChannel[],
+    }
+    db.write()
+  },
+
+  getUseEstimatedDeliveryDateForChannel: (payload: Estimatepayload) => {
+    const findedItemById = db.data?.useEstimatedDeliveryDateForChannel.find(
+      item =>
+        item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+        item.salesChannelRef === payload.salesChannelRef
+    )
+
+    if (findedItemById) return findedItemById
+
+    const defaultData = {
+      ...payload,
+      active: false,
+    }
+    db.data?.useEstimatedDeliveryDateForChannel.push(defaultData)
+    db.write()
+    return defaultData
+  },
+  putUseEstimatedDeliveryDateForChannel: (payload: Estimatepayload) => {
+    const findedItemById = db.data?.useEstimatedDeliveryDateForChannel.find(
+      item =>
+        item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+        item.salesChannelRef === payload.salesChannelRef
+    )
+
+    const updatedUseEstimatedDeliveryDateForChannelArray = findedItemById
+      ? db.data?.useEstimatedDeliveryDateForChannel.map(item => {
+          if (
+            item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+            item.salesChannelRef === payload.salesChannelRef
+          ) {
+            return payload
+          }
+          return item
+        })
+      : [...(db.data?.useEstimatedDeliveryDateForChannel as []), payload]
+    db.data = {
+      ...(db.data as BaseLayerDataType),
+      useEstimatedDeliveryDateForChannel: updatedUseEstimatedDeliveryDateForChannelArray as [],
+    }
+    db.write()
+
+    return payload
+  },
+
+  getUseEventsByOrderStarusForChannel: (payload: Estimatepayload) => {
+    const findedItemById = db.data?.useEventsByOrderStarusForChannel.find(
+      item =>
+        item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+        item.salesChannelRef === payload.salesChannelRef
+    )
+
+    if (findedItemById) return findedItemById
+
+    const defaultData = {
+      ...payload,
+      active: false,
+    }
+    db.data?.useEventsByOrderStarusForChannel.push(defaultData)
+    db.write()
+    return defaultData
+  },
+
+  putUseEventsByOrderStarusForChannel: (payload: Estimatepayload) => {
+    const findedItemById = db.data?.useEventsByOrderStarusForChannel.find(
+      item =>
+        item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+        item.salesChannelRef === payload.salesChannelRef
+    )
+
+    const updateduseEventsByOrderStarusForChannelArray = findedItemById
+      ? db.data?.useEventsByOrderStarusForChannel.map(item => {
+          if (
+            item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+            item.salesChannelRef === payload.salesChannelRef
+          ) {
+            return payload
+          }
+          return item
+        })
+      : [...(db.data?.useEventsByOrderStarusForChannel as []), payload]
+    db.data = {
+      ...(db.data as BaseLayerDataType),
+      useEventsByOrderStarusForChannel: updateduseEventsByOrderStarusForChannelArray as [],
+    }
+    db.write()
+
+    return payload
+  },
+
+  disconnect: () => {
+    db.data = { ...baseLayerData }
+    db.write()
   },
 }

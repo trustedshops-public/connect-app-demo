@@ -1,3 +1,4 @@
+import { api } from '@/database-container/api/api'
 import { EVENTS } from '@/example-of-system-integration/eventsLib'
 import { sendingNotification } from '../NOTIFICATION'
 
@@ -5,8 +6,7 @@ export function saveCredentials(event: { payload: { clientId: string; clientSecr
   console.log('Demo: SAVE_CREDENTIALS', event.payload)
 
   try {
-    // save credentials to db
-
+    api.postCredentials(event.payload)
     setTimeout(() => {
       sendingNotification(EVENTS.SAVE_CREDENTIALS, 'CREDENTIALS SAVED', 'success', 'save')
     }, 400)
