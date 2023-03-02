@@ -6,7 +6,7 @@ import { getAvailableProductIdenfiers } from './GET_AVAILABLE_PRODUCT_IDENTIFIER
 import { getCredentialsProvided } from './GET_CREDENTIALS_PROVIDED/getCredentialsProvided'
 import { getInformationOfSystem } from './GET_INFORMATION_OF_SYSTEM/getInformationOfSystem'
 import { getLocale } from './GET_LOCALE/getLocale'
-import { getLocationsFortWidget } from './GET_LOCATION_FOR_WIDGET/getLocationsFortWidget'
+import { getLocationsForWidget } from './GET_LOCATION_FOR_WIDGET/getLocationsForWidget'
 import { getMappedChannels } from './GET_MAPPED_CHANNELS/getMappedChannels'
 import { getProductReviewForChannel } from './GET_PRODUCT_REVIEW_FOR_CHANNEL/getProductReviewForChannel'
 import { getSalesChannelsProvided } from './GET_SALES_CHANNELS_PROVIDED/getSalesChannelsProvided'
@@ -31,7 +31,7 @@ export {
   saveMappedChannels,
   getTrustbadgeConfigurationProvided,
   saveTrustbadgeConfiguration,
-  getLocationsFortWidget,
+  getLocationsForWidget,
   getAvailableProductIdenfiers,
   getWidgetProvided,
   saveWidgetChanges,

@@ -9,7 +9,7 @@ import {
   getCredentialsProvided,
   getInformationOfSystem,
   getLocale,
-  getLocationsFortWidget,
+  getLocationsForWidget,
   getMappedChannels,
   getProductReviewForChannel,
   getSalesChannelsProvided,
@@ -45,7 +45,7 @@ export const baseLayer = (): any => {
     [EVENTS.GET_TRUSTBADGE_CONFIGURATION_PROVIDED]: getTrustbadgeConfigurationProvided,
     [EVENTS.SAVE_TRUSTBADGE_CONFIGURATION]: saveTrustbadgeConfiguration,
 
-    [EVENTS.GET_LOCATION_FOR_WIDGET]: getLocationsFortWidget,
+    [EVENTS.GET_LOCATION_FOR_WIDGET]: getLocationsForWidget,
     [EVENTS.GET_AVAILABLE_PRODUCT_IDENTIFIERS]: getAvailableProductIdenfiers,
     [EVENTS.GET_WIDGET_PROVIDED]: getWidgetProvided,
     [EVENTS.SAVE_WIDGET_CHANGES]: saveWidgetChanges,
