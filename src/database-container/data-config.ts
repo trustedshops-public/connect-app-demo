@@ -10,9 +10,9 @@ export const baseLayerData: BaseLayerDataType = {
     nameOfSystem: 'Demo-app',
     versionNumberOfSystem: '1.0.0',
     versionNumberOfPlugin: '1.0.0',
-    allowsEstimatedDeliveryDate: false,
-    allowsEventsByOrderStatus: false,
-    allowsSendReviewInvitesForPreviousOrders: false,
+    allowsEstimatedDeliveryDate: true,
+    allowsEventsByOrderStatus: true,
+    allowsSendReviewInvitesForPreviousOrders: true,
   },
   credentials: {
     clientId: '',

@@ -4,6 +4,7 @@ import { h } from 'preact'
 import { FC } from 'preact/compat'
 
 export const LeftPanel: FC = () => {
+  db.read()
   return (
     <div className=" ts-flex ts-flex-col ts-w-1/4 ts-bg-slate-200 ts-p-2 ts-gap-2">
       <p className="ts-text-default ts-text-sm ts-gap-2">

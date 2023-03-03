@@ -1,9 +1,10 @@
 import { api } from '@/database-container/api/api'
 import { EVENTS } from '@/example-of-system-integration/eventsLib'
+import { BaseLayerLogger } from '@/utils/BaseLayerLogger'
 import { sendingNotification } from '../NOTIFICATION'
 
 export function saveCredentials(event: { payload: { clientId: string; clientSecret: string } }) {
-  console.log('Demo: SAVE_CREDENTIALS', event.payload)
+  BaseLayerLogger('Demo: SAVE_CREDENTIALS. Payload:', event.payload)
 
   try {
     api.postCredentials(event.payload)

@@ -1,13 +1,13 @@
 import { api } from '@/database-container/api/api'
 import { dispatchAction, EVENTS } from '@/example-of-system-integration/eventsLib'
+import { BaseLayerLogger } from '@/utils/BaseLayerLogger'
 import { IWidgets } from '../../types'
 import { sendingNotification } from '../NOTIFICATION'
 
 export function saveWidgetChanges(event: { payload: IWidgets }) {
   try {
-    console.log('Demo: SAVE_WIDGET_CHANGES', event.payload)
-
     const savedWidgetsToApi = api.postWidgets(event.payload)
+    BaseLayerLogger('Demo: SAVE_WIDGET_CHANGES. Payload:', savedWidgetsToApi)
 
     dispatchAction({
       action: EVENTS.SET_WIDGET_PROVIDED,

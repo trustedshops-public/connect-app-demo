@@ -1,11 +1,13 @@
 import { api } from '@/database-container/api/api'
 import { dispatchAction, EVENTS } from '@/example-of-system-integration/eventsLib'
+import { BaseLayerLogger } from '@/utils/BaseLayerLogger'
 import { IMappedChannel } from '../../types'
 import { sendingNotification } from '../NOTIFICATION'
 
 export function saveMappedChannels(event: { payload: IMappedChannel[] }) {
   try {
-    console.log('Demo: SAVE_MAPPED_CHANNEL', event.payload)
+    BaseLayerLogger('Demo: SAVE_MAPPED_CHANNEL. Payload:', event.payload)
+
     api.postMappedChannels(event.payload)
 
     dispatchAction({

@@ -1,5 +1,6 @@
 import { api } from '@/database-container/api/api'
 import { dispatchAction, EVENTS } from '@/example-of-system-integration/eventsLib'
+import { BaseLayerLogger } from '@/utils/BaseLayerLogger'
 
 export function getProductReviewForChannel(event: {
   payload: {
@@ -8,9 +9,10 @@ export function getProductReviewForChannel(event: {
     salesChannelRef: string
   }
 }) {
-  console.log('Demo: GET_PRODUCT_REVIEW_FOR_CHANNEL', event.payload)
-
   const productReviewByChannel = api.getProductReviewForChannel(event.payload)
+
+  BaseLayerLogger('Demo: SET_PRODUCT_REVIEW_FOR_CHANNEL. Answer:', productReviewByChannel)
+
   dispatchAction({
     action: EVENTS.SET_PRODUCT_REVIEW_FOR_CHANNEL,
     payload: productReviewByChannel,

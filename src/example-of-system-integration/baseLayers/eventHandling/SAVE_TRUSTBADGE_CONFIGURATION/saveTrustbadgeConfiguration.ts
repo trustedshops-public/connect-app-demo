@@ -1,10 +1,11 @@
 import { api } from '@/database-container/api/api'
 import { dispatchAction, EVENTS } from '@/example-of-system-integration/eventsLib'
+import { BaseLayerLogger } from '@/utils/BaseLayerLogger'
 import { ITrustbadge } from '../../types'
 import { sendingNotification } from '../NOTIFICATION'
 
 export function saveTrustbadgeConfiguration(event: { payload: ITrustbadge }) {
-  console.log('Demo: SAVE_TRUSTBADGE_CONFIGURATION', event.payload)
+  BaseLayerLogger('Demo: SAVE_TRUSTBADGE_CONFIGURATION. Payload:', event.payload)
 
   try {
     const savedToApiTB = api.postTrustbadge(event.payload)

@@ -1,11 +1,12 @@
 import { api } from '@/database-container/api/api'
 import { dispatchAction, EVENTS } from '@/example-of-system-integration/eventsLib'
+import { BaseLayerLogger } from '@/utils/BaseLayerLogger'
 import { IMappedChannel } from '../../types'
 import { sendingNotification } from '../NOTIFICATION'
 
 export function deactivateProductReviewForChannel(event: { payload: IMappedChannel }) {
   try {
-    console.log('Demo: DEACTIVATE_PRODUCT_REVIEW_FOR_CHANNEL', event.payload)
+    BaseLayerLogger('Demo: DEACTIVATE_PRODUCT_REVIEW_FOR_CHANNEL. Payload:', event.payload)
 
     api.deactivateProductReviewForChannel(event.payload)
     dispatchAction({
