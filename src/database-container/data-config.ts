@@ -18,7 +18,20 @@ export const baseLayerData: BaseLayerDataType = {
     clientId: '',
     clientSecret: '',
   },
-  salesChannels: [],
+  salesChannels: [
+    {
+      id: 'shop-sales-channel-1',
+      name: 'Sales Channel EN',
+      url: 'www.example.com/en',
+      locale: 'en_GB',
+    },
+    {
+      id: 'shop-sales-channel-2',
+      name: 'Sales Channel DE',
+      url: 'www.example.com/de',
+      locale: 'de_DE',
+    },
+  ],
   mappedChannels: [],
   trustbadgeConfiguration: [],
   widgets: [],
