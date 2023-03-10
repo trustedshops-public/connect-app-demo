@@ -4,11 +4,11 @@ import { dispatchAction, EVENTS } from '@/example-of-system-integration/eventsLi
 import { BaseLayerLogger } from '@/utils/BaseLayerLogger'
 import { sendingNotification } from '../NOTIFICATION'
 
-export function saveUseEventsByOrderStarusForChannel(event: { payload: any }) {
+export function saveUseEventsByOrderStatusForChannel(event: { payload: any }) {
   try {
     BaseLayerLogger('Demo: SAVE_USE_EVENTS_BY_ORDER_STATUS_FOR_CHANNEL. Payload:', event.payload)
 
-    const savedUseEstimatedDeliveryDateForChannelToApi = api.putUseEventsByOrderStarusForChannel(
+    const savedUseEstimatedDeliveryDateForChannelToApi = api.putUseEventsByOrderStatusForChannel(
       event.payload
     )
 

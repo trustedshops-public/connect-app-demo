@@ -194,8 +194,8 @@ export const api = {
     return payload
   },
 
-  getUseEventsByOrderStarusForChannel: (payload: Estimatepayload) => {
-    const findedItemById = db.data?.useEventsByOrderStarusForChannel.find(
+  getUseEventsByOrderStatusForChannel: (payload: Estimatepayload) => {
+    const findedItemById = db.data?.useEventsByOrderStatusForChannel.find(
       item =>
         item.eTrustedChannelRef === payload.eTrustedChannelRef &&
         item.salesChannelRef === payload.salesChannelRef
@@ -207,20 +207,20 @@ export const api = {
       ...payload,
       active: false,
     }
-    db.data?.useEventsByOrderStarusForChannel.push(defaultData)
+    db.data?.useEventsByOrderStatusForChannel.push(defaultData)
     db.write()
     return defaultData
   },
 
-  putUseEventsByOrderStarusForChannel: (payload: Estimatepayload) => {
-    const findedItemById = db.data?.useEventsByOrderStarusForChannel.find(
+  putUseEventsByOrderStatusForChannel: (payload: Estimatepayload) => {
+    const findedItemById = db.data?.useEventsByOrderStatusForChannel.find(
       item =>
         item.eTrustedChannelRef === payload.eTrustedChannelRef &&
         item.salesChannelRef === payload.salesChannelRef
     )
 
-    const updateduseEventsByOrderStarusForChannelArray = findedItemById
-      ? db.data?.useEventsByOrderStarusForChannel.map(item => {
+    const updateduseEventsByOrderStatusForChannelArray = findedItemById
+      ? db.data?.useEventsByOrderStatusForChannel.map(item => {
           if (
             item.eTrustedChannelRef === payload.eTrustedChannelRef &&
             item.salesChannelRef === payload.salesChannelRef
@@ -229,10 +229,10 @@ export const api = {
           }
           return item
         })
-      : [...(db.data?.useEventsByOrderStarusForChannel as []), payload]
+      : [...(db.data?.useEventsByOrderStatusForChannel as []), payload]
     db.data = {
       ...(db.data as BaseLayerDataType),
-      useEventsByOrderStarusForChannel: updateduseEventsByOrderStarusForChannelArray as [],
+      useEventsByOrderStatusForChannel: updateduseEventsByOrderStatusForChannelArray as [],
     }
     db.write()
 

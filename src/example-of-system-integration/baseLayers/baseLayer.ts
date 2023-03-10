@@ -15,13 +15,13 @@ import {
   getSalesChannelsProvided,
   getTrustbadgeConfigurationProvided,
   getUseEstimatedDeliveryDateForChannel,
-  getUseEventsByOrderStarusForChannel,
+  getUseEventsByOrderStatusForChannel,
   getWidgetProvided,
   saveCredentials,
   saveMappedChannels,
   saveTrustbadgeConfiguration,
   saveUseEstimatedDeliveryDateForChannel,
-  saveUseEventsByOrderStarusForChannel,
+  saveUseEventsByOrderStatusForChannel,
   saveWidgetChanges,
 } from './eventHandling'
 
@@ -58,8 +58,8 @@ export const baseLayer = (): any => {
     [EVENTS.GET_USE_ESTIMATED_DELIVERY_DATE_FOR_CHANNEL]: getUseEstimatedDeliveryDateForChannel,
     [EVENTS.SAVE_USE_ESTIMATED_DELIVERY_DATE_FOR_CHANNEL]: saveUseEstimatedDeliveryDateForChannel,
 
-    [EVENTS.GET_USE_EVENTS_BY_ORDER_STATUS_FOR_CHANNEL]: getUseEventsByOrderStarusForChannel,
-    [EVENTS.SAVE_USE_EVENTS_BY_ORDER_STATUS_FOR_CHANNEL]: saveUseEventsByOrderStarusForChannel,
+    [EVENTS.GET_USE_EVENTS_BY_ORDER_STATUS_FOR_CHANNEL]: getUseEventsByOrderStatusForChannel,
+    [EVENTS.SAVE_USE_EVENTS_BY_ORDER_STATUS_FOR_CHANNEL]: saveUseEventsByOrderStatusForChannel,
 
     [EVENTS.EXPORT_PREVIOUS_ORDER]: exportPreviousOrder,
     [EVENTS.DISCONNECTED]: disconnected,

@@ -12,13 +12,13 @@ import { getProductReviewForChannel } from './GET_PRODUCT_REVIEW_FOR_CHANNEL/get
 import { getSalesChannelsProvided } from './GET_SALES_CHANNELS_PROVIDED/getSalesChannelsProvided'
 import { getTrustbadgeConfigurationProvided } from './GET_TRUSTBADGE_CONFIGURATION_PROVIDED/getTrustbadgeConfigurationProvided'
 import { getUseEstimatedDeliveryDateForChannel } from './GET_USE_ESTIMATED_DELIVERY_DATE_FOR_CHANNEL/getUseEstimatedDeliveryDateForChannel'
-import { getUseEventsByOrderStarusForChannel } from './GET_USE_EVENTS_BY_ORDER_STATUS_FOR_CHANNEL/getUseEventsByOrderStarusForChannel'
+import { getUseEventsByOrderStatusForChannel } from './GET_USE_EVENTS_BY_ORDER_STATUS_FOR_CHANNEL/getUseEventsByOrderStatusForChannel'
 import { getWidgetProvided } from './GET_WIDGET_PROVIDED/getWidgetProvided'
 import { saveCredentials } from './SAVE_CREDENTIALS/saveCredentials'
 import { saveMappedChannels } from './SAVE_MAPPED_CHANNEL/saveMappedChannels'
 import { saveTrustbadgeConfiguration } from './SAVE_TRUSTBADGE_CONFIGURATION/saveTrustbadgeConfiguration'
 import { saveUseEstimatedDeliveryDateForChannel } from './SAVE_USE_ESTIMATED_DELIVERY_DATE_FOR_CHANNEL/saveUseEstimatedDeliveryDateForChannel'
-import { saveUseEventsByOrderStarusForChannel } from './SAVE_USE_EVENTS_BY_ORDER_STATUS_FOR_CHANNEL/saveUseEventsByOrderStarusForChannel'
+import { saveUseEventsByOrderStatusForChannel } from './SAVE_USE_EVENTS_BY_ORDER_STATUS_FOR_CHANNEL/saveUseEventsByOrderStatusForChannel'
 import { saveWidgetChanges } from './SAVE_WIDGET_CHANGES/saveWidgetChanges'
 
 export {
@@ -40,8 +40,8 @@ export {
   deactivateProductReviewForChannel,
   getUseEstimatedDeliveryDateForChannel,
   saveUseEstimatedDeliveryDateForChannel,
-  getUseEventsByOrderStarusForChannel,
-  saveUseEventsByOrderStarusForChannel,
+  getUseEventsByOrderStatusForChannel,
+  saveUseEventsByOrderStatusForChannel,
   exportPreviousOrder,
   disconnected,
 }

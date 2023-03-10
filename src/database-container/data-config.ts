@@ -35,11 +35,48 @@ export const baseLayerData: BaseLayerDataType = {
   mappedChannels: [],
   trustbadgeConfiguration: [],
   widgets: [],
-  widgetLocation: [],
+  widgetLocation: [
+    {
+      id: 'wdg-loc-hp',
+      name: 'Home Page',
+    },
+    {
+      id: 'wdg-loc-pp',
+      name: 'Product Page',
+    },
+    {
+      id: 'wdg-loc-pl',
+      name: 'Product Listings',
+    },
+    {
+      id: 'wdg-loc-lrm',
+      name: 'Left/Right margin',
+    },
+    {
+      id: 'wdg-loc-pd',
+      name: 'Product Description',
+    },
+    {
+      id: 'wdg-loc-hd',
+      name: 'Page Header',
+    },
+    {
+      id: 'wdg-loc-ft',
+      name: 'Page Footer',
+    },
+    {
+      id: 'wdg-loc-pn',
+      name: 'Product Name',
+    },
+    {
+      id: 'wdg-loc-cst',
+      name: 'Custom',
+    },
+  ],
   productIdentifiers: [],
   productReview: [],
   useEstimatedDeliveryDateForChannel: [],
-  useEventsByOrderStarusForChannel: [],
+  useEventsByOrderStatusForChannel: [],
 }
 
 export type BaseLayerDataType = {
@@ -79,7 +116,7 @@ export type BaseLayerDataType = {
   productIdentifiers: Array<{ id: string; name: string }>
   productReview: Array<IMappedChannel>
   useEstimatedDeliveryDateForChannel: Array<Estimatepayload>
-  useEventsByOrderStarusForChannel: Array<Estimatepayload>
+  useEventsByOrderStatusForChannel: Array<Estimatepayload>
 }
 
 export type Estimatepayload = {
