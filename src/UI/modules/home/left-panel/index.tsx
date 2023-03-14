@@ -1,10 +1,33 @@
-import { baseLayerData } from '@/database-container/data-config'
-import { db } from '@/database-container/useMockDataBaseForBaseLayer'
+import { api } from '@/database-container/api/api'
+import { InfoSystemType, LocalesTypes } from '@/database-container/data-config'
+import { db } from '@/database-container/DatabaseContainer'
+import { dispatchAction, EVENTS } from '@/example-of-system-integration/eventsLib'
+import { Option, Select } from '@/UI/components/controls/dropdown'
+import { EditIcon } from '@/UI/components/layouts/icons/EditIcon'
 import { h } from 'preact'
-import { FC } from 'preact/compat'
+import { FC, useEffect, useState } from 'preact/compat'
+import EditInfoModal from './infoOfSystem/EditModal'
 
 export const LeftPanel: FC = () => {
-  db.read()
+  const [modalIsOpen, setOpenModal] = useState(false)
+  const [infoOfSystem, setInfoOfSystem] = useState<InfoSystemType>()
+  const [locale, setLocale] = useState<string>()
+
+  useEffect(() => {
+    db.read()
+    setInfoOfSystem(db.data?.infoSystem)
+    setLocale(db.data?.locale)
+  }, [modalIsOpen])
+
+  const setSelectedLocale = (lng: LocalesTypes) => {
+    console.log('file: index.tsx:21  setSelectedLocale  lng:', lng)
+    api.putLocale(lng)
+    dispatchAction({
+      action: EVENTS.SET_LOCALE,
+      payload: lng,
+    })
+    setLocale(lng)
+  }
   return (
     <div className=" ts-flex ts-flex-col ts-w-1/4 ts-bg-slate-200 ts-p-2 ts-gap-2">
       <p className="ts-text-default ts-text-sm ts-gap-2">
@@ -31,21 +54,42 @@ export const LeftPanel: FC = () => {
         </div>
       )}
       <div className={''}>
-        <p className="ts-text-default ts-text-md ts-font-bold">Information of System:</p>
+        <div className={'ts-flex ts-gap-4 ts-items-center'}>
+          <p className="ts-text-default ts-text-md ts-font-bold">Information of System:</p>
+          <button onClick={() => setOpenModal(true)}>
+            <EditIcon />
+          </button>
+        </div>
         <div className="ts-text-default ts-text-sm">
-          {Object.entries(baseLayerData.infoSystem).map(([key, value]) => (
-            <p key={key}>
-              {key.toString()}: {`'${value.toString()}'`}
-            </p>
-          ))}
+          {infoOfSystem &&
+            Object.entries(infoOfSystem).map(([key, value]) => (
+              <p key={key}>
+                {key.toString()}: {`'${value.toString()}'`}
+              </p>
+            ))}
         </div>
       </div>
       <div className={''}>
         <p className="ts-text-default ts-text-md ts-font-bold">Active locale:</p>
         <div className="ts-text-default ts-text-sm">
-          {baseLayerData.locale.toString().length ? baseLayerData.locale.toString() : 'en-GB'}
+          <Select placeholder="Languege" defaultValue={locale || 'en-GB'}>
+            {['en-GB', 'de-DE', 'es-ES', 'fr-FR', 'it-IT', 'nl-NL', 'pl-PL', 'pt-PT'].map(item => (
+              <Option
+                key={item}
+                value={item}
+                changeSelectedOption={val => setSelectedLocale(val as LocalesTypes)}
+              >
+                <p className="ts-m-2 ts-text-default ts-font-normal ts-text-sm">{item}</p>
+              </Option>
+            ))}
+          </Select>
         </div>
       </div>
+      <EditInfoModal
+        modalIsOpen={modalIsOpen}
+        setOpenModal={setOpenModal}
+        infoOfSystem={infoOfSystem as InfoSystemType}
+      />
     </div>
   )
 }

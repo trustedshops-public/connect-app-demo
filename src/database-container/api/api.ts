@@ -1,5 +1,15 @@
-import { IMappedChannel, ITrustbadge, IWidgets } from '@/example-of-system-integration/baseLayers/types'
-import { baseLayerData, BaseLayerDataType, Estimatepayload } from '../data-config'
+import {
+  IMappedChannel,
+  ITrustbadge,
+  IWidgets,
+} from '@/example-of-system-integration/baseLayers/types'
+import {
+  baseLayerData,
+  BaseLayerDataType,
+  Estimatepayload,
+  InfoSystemType,
+  LocalesTypes,
+} from '../data-config'
 import { db } from '../useMockDataBaseForBaseLayer'
 
 //Helper function to check the validity of the product review channel
@@ -16,8 +26,16 @@ export const api = {
   getSystemInfo: () => {
     return db.data?.infoSystem
   },
+  putSystemInfo: (infoSystem: InfoSystemType) => {
+    db.data = { ...(db.data as BaseLayerDataType), infoSystem }
+    db.write()
+  },
   getLocale: () => {
     return db.data?.locale
+  },
+  putLocale: (lng: LocalesTypes) => {
+    db.data = { ...(db.data as BaseLayerDataType), locale: lng }
+    db.write()
   },
   getCredentials: () => {
     return db.data?.credentials
@@ -147,12 +165,13 @@ export const api = {
     salesChannelRef: string
     eTrustedChannelRef: string
   }) => {
-    db.data?.productReview.forEach(
-      (item, index) => {
-        if (item.eTrustedChannelRef === payload.eTrustedChannelRef &&
-          item.salesChannelRef === payload.salesChannelRef)
-          db.data?.productReview.splice(index, 1)
-      })
+    db.data?.productReview.forEach((item, index) => {
+      if (
+        item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+        item.salesChannelRef === payload.salesChannelRef
+      )
+        db.data?.productReview.splice(index, 1)
+    })
     db.write()
   },
 
@@ -202,7 +221,7 @@ export const api = {
 
   getUseEventsByOrderStatusForChannel: (payload: Estimatepayload) => {
     const foundItem = db.data?.useEstimatedDeliveryDateForChannel.filter(
-      item=>
+      item =>
         item.eTrustedChannelRef === payload.eTrustedChannelRef &&
         item.salesChannelRef === payload.salesChannelRef
     )

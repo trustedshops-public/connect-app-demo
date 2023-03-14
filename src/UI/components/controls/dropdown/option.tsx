@@ -3,9 +3,9 @@ import { FC } from 'preact/compat'
 
 interface Props {
   children: ComponentChildren
-  value: string | number
+  value: string
   selected?: boolean
-  changeSelectedOption: (value: string | number) => void
+  changeSelectedOption: (value: string) => void
   id?: string
 }
 

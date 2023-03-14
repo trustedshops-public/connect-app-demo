@@ -83,28 +83,8 @@ export const baseLayerData: BaseLayerDataType = {
 }
 
 export type BaseLayerDataType = {
-  infoSystem: {
-    nameOfSystem: string
-    versionNumberOfSystem: string
-    versionNumberOfPlugin: string
-    allowsEstimatedDeliveryDate?: boolean
-    allowsEventsByOrderStatus?: boolean
-    allowsSendReviewInvitesForPreviousOrders?: boolean
-    allowsSendReviewInvitesForProduct?: boolean
-    allowsEditIntegrationCode?: boolean
-    allowsSupportWidgets?: boolean
-  }
-  locale:
-    | 'en-GB'
-    | 'de-DE'
-    | 'es-ES'
-    | 'fr-FR'
-    | 'fr-FR'
-    | 'it-IT'
-    | 'nl-NL'
-    | 'pl-PL'
-    | 'pt-PT'
-    | ''
+  infoSystem: InfoSystemType
+  locale: LocalesTypes
   credentials: {
     clientId: string
     clientSecret: string
@@ -130,4 +110,27 @@ export type Estimatepayload = {
   active: boolean
   eTrustedChannelRef: string
   salesChannelRef: string
+}
+
+export type LocalesTypes =
+  | 'en-GB'
+  | 'de-DE'
+  | 'es-ES'
+  | 'fr-FR'
+  | 'fr-FR'
+  | 'it-IT'
+  | 'nl-NL'
+  | 'pl-PL'
+  | 'pt-PT'
+
+export type InfoSystemType = {
+  nameOfSystem: string
+  versionNumberOfSystem: string
+  versionNumberOfPlugin: string
+  allowsEstimatedDeliveryDate?: boolean
+  allowsEventsByOrderStatus?: boolean
+  allowsSendReviewInvitesForPreviousOrders?: boolean
+  allowsSendReviewInvitesForProduct?: boolean
+  allowsEditIntegrationCode?: boolean
+  allowsSupportWidgets?: boolean
 }
