@@ -3,15 +3,29 @@ import {
   ITrustbadge,
   IWidgets,
 } from '@/example-of-system-integration/baseLayers/types'
-import { baseLayerData, BaseLayerDataType, Estimatepayload } from '../data-config'
+import {
+  baseLayerData,
+  BaseLayerDataType,
+  Estimatepayload,
+  InfoSystemType,
+  LocalesTypes,
+} from '../data-config'
 import { db } from '../DatabaseContainer'
 
 export const api = {
   getSystemInfo: () => {
     return db.data?.infoSystem
   },
+  putSystemInfo: (infoSystem: InfoSystemType) => {
+    db.data = { ...(db.data as BaseLayerDataType), infoSystem }
+    db.write()
+  },
   getLocale: () => {
     return db.data?.locale
+  },
+  putLocale: (lng: LocalesTypes) => {
+    db.data = { ...(db.data as BaseLayerDataType), locale: lng }
+    db.write()
   },
   getCredentials: () => {
     return db.data?.credentials
