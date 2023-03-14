@@ -13,10 +13,13 @@ export const baseLayerData: BaseLayerDataType = {
     allowsEstimatedDeliveryDate: true,
     allowsEventsByOrderStatus: true,
     allowsSendReviewInvitesForPreviousOrders: true,
+    allowsSendReviewInvitesForProduct: true,
+    allowsEditIntegrationCode: true,
+    allowsSupportWidgets: true,
   },
   credentials: {
-    clientId: '',
-    clientSecret: '',
+    clientId: 'beae12faf8c9__NewGen',
+    clientSecret: 'e07080c4-1818-407b-a3ae-8c30af2b7e48',
   },
   salesChannels: [
     {
@@ -84,9 +87,12 @@ export type BaseLayerDataType = {
     nameOfSystem: string
     versionNumberOfSystem: string
     versionNumberOfPlugin: string
-    allowsEstimatedDeliveryDate: boolean
-    allowsEventsByOrderStatus: boolean
-    allowsSendReviewInvitesForPreviousOrders: boolean
+    allowsEstimatedDeliveryDate?: boolean
+    allowsEventsByOrderStatus?: boolean
+    allowsSendReviewInvitesForPreviousOrders?: boolean
+    allowsSendReviewInvitesForProduct?: boolean
+    allowsEditIntegrationCode?: boolean
+    allowsSupportWidgets?: boolean
   }
   locale:
     | 'en-GB'
