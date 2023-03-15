@@ -25,5 +25,5 @@
         "@/*": ["./src/*"],
     }
   },
-  "include": ["src", "public/fonts/connector.umd.js"]
+  "include": ["src", "public/fonts/connector.umd.js", "__test__"]
 }
