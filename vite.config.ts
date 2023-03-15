@@ -23,6 +23,7 @@ export default defineConfig(() => {
       },
       mockReset: true,
       restoreMocks: true,
+      globals: true,
     },
   }
 })
