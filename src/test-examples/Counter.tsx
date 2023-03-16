@@ -9,7 +9,7 @@ export const Counter: FC<{ initialCount: number }> = ({ initialCount }) => {
   return (
     <div>
       Current value: {count}
-      <button onClick={increment}>Increment</button>
+      <button data-testid="increment_btn" onClick={increment}>Increment</button>
     </div>
   )
 }

@@ -16,7 +16,7 @@ describe('Counter', () => {
   test('should increment after "Increment" button is clicked', async () => {
     render(<Counter initialCount={5} />)
 
-    fireEvent.click(screen.getByText('Increment'))
+    fireEvent.click(screen.getByTestId('increment_btn'))
     await waitFor(() => {
       expect(screen.getByText('Current value: 6')).toBeInTheDocument()
     })
