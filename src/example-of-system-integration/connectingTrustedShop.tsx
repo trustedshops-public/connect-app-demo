@@ -7,7 +7,7 @@ import { FC, memo, useEffect, useRef, useState } from 'preact/compat'
 import { baseLayer } from './baseLayers/baseLayer'
 import { dispatchAction, EVENTS } from './eventsLib'
 
-const InjectScript = memo(({ src }: { src: string }) => {
+export const InjectScript = memo(({ src }: { src: string }) => {
   const divRef = useRef(null)
 
   useEffect(() => {
@@ -51,6 +51,7 @@ export const ConnectingTrustedShop: FC = () => {
   return (
     <div className="ts-flex-1 ts-gap-2">
       <Button
+        id="open"
         label={`${isShowConnectorPlugin ? 'Close' : 'Open'} connector`}
         theme={ButtonThemes.Secondary}
         onClick={toggleShowConnectorPlugin}
@@ -58,7 +59,7 @@ export const ConnectingTrustedShop: FC = () => {
       {isShowConnectorPlugin && (
         <>
           <InjectScript src={connectorScript} />
-          <div id="eTrusted-connector" />
+          <div id="eTrusted-connector" data-testid="eTrusted-connector" />
         </>
       )}
     </div>

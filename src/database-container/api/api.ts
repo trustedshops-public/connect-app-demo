@@ -4,7 +4,7 @@ import {
   IWidgets,
 } from '@/example-of-system-integration/baseLayers/types'
 import { baseLayerData, BaseLayerDataType, Estimatepayload } from '../data-config'
-import { db } from '../DatabaseContainer'
+import { db } from '../useMockDataBaseForBaseLayer'
 
 export const api = {
   getSystemInfo: () => {

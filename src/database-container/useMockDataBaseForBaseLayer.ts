@@ -1,5 +1,6 @@
 import { useEffect } from 'preact/hooks'
 import { LowSync } from 'lowdb'
+//@ts-ignore
 import { LocalStorage } from 'lowdb/browser' //right path
 import { baseLayerData, BaseLayerDataType } from '@/database-container/data-config'
 import { DBLogger } from '@/utils/DBLogger'

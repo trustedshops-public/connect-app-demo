@@ -1,5 +1,5 @@
 import { baseLayerData } from '@/database-container/data-config'
-import { db } from '@/database-container/DatabaseContainer'
+import { db } from '@/database-container/useMockDataBaseForBaseLayer'
 import { h } from 'preact'
 import { FC } from 'preact/compat'
 
