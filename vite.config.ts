@@ -19,7 +19,7 @@ export default defineConfig(() => {
       setupFiles: ['./__test__/test-setup.ts'],
       includeSource: ['src/**/*.{ts,tsx}'],
       coverage: {
-        reporter: ['text-summary', 'text'],
+        reporter: ['text-summary', 'text', 'html'],
       },
       mockReset: true,
       restoreMocks: true,

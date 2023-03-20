@@ -11,7 +11,7 @@ afterEach(() => {
 
 describe('Activate Product Review For Channel', () => {
   test('Activate with Correct payload', () => {
-    let selectedImappedChannelData = getMappedChannels(TEST)[0]
+    const selectedImappedChannelData = getMappedChannels(TEST)[0]
     const iMappedChannel: IMappedChannel = {
       eTrustedChannelRef: selectedImappedChannelData.eTrustedChannelRef,
       eTrustedLocale: selectedImappedChannelData.eTrustedLocale,
@@ -21,7 +21,7 @@ describe('Activate Product Review For Channel', () => {
       salesChannelRef: selectedImappedChannelData.salesChannelRef,
       salesChannelLocale: selectedImappedChannelData.salesChannelLocale,
       salesChannelName: selectedImappedChannelData.salesChannelName,
-      salesChannelUrl: selectedImappedChannelData.salesChannelUrl
+      salesChannelUrl: selectedImappedChannelData.salesChannelUrl,
     }
     const result = activateProductReviewForChannel({ payload: iMappedChannel })
     expect(result).toBe(true)
@@ -36,13 +36,13 @@ describe('Activate Product Review For Channel', () => {
       salesChannelRef: '',
       salesChannelLocale: '',
       salesChannelName: '',
-      salesChannelUrl: ''
+      salesChannelUrl: '',
     }
     const result = activateProductReviewForChannel({ payload: iMappedChannel })
     expect(result).toBe(false)
   })
   test('Activate with partial empty payload', () => {
-    let selectedImappedChannelData = getMappedChannels(TEST)[0]
+    const selectedImappedChannelData = getMappedChannels(TEST)[0]
     const iMappedChannel: IMappedChannel = {
       eTrustedChannelRef: selectedImappedChannelData.eTrustedChannelRef,
       eTrustedLocale: selectedImappedChannelData.eTrustedLocale,
@@ -52,7 +52,7 @@ describe('Activate Product Review For Channel', () => {
       salesChannelRef: selectedImappedChannelData.salesChannelRef,
       salesChannelLocale: selectedImappedChannelData.salesChannelLocale,
       salesChannelName: selectedImappedChannelData.salesChannelName,
-      salesChannelUrl: selectedImappedChannelData.salesChannelUrl
+      salesChannelUrl: selectedImappedChannelData.salesChannelUrl,
     }
     const result = activateProductReviewForChannel({ payload: iMappedChannel })
     expect(result).toBe(false)
@@ -62,4 +62,5 @@ describe('Activate Product Review For Channel', () => {
     const result = activateProductReviewForChannel({ payload: iMappedChannel })
     expect(result).toBe(false)
   })
+  //TODO test with patterns
 })
