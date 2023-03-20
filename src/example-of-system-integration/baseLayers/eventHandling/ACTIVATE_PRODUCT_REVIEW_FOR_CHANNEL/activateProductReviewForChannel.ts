@@ -9,6 +9,7 @@ export function activateProductReviewForChannel(event: { payload: IMappedChannel
     BaseLayerLogger('Demo: ACTIVATE_PRODUCT_REVIEW_FOR_CHANNEL. Payload:', event.payload)
 
     const activatedProductReviewForChannel = api.activateProductReviewForChannel(event.payload)
+    if(activatedProductReviewForChannel === null) return false
     dispatchAction({
       action: EVENTS.SET_PRODUCT_REVIEW_FOR_CHANNEL,
       payload: activatedProductReviewForChannel,

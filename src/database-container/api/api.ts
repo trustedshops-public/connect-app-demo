@@ -6,6 +6,21 @@ import {
 import { baseLayerData, BaseLayerDataType, Estimatepayload } from '../data-config'
 import { db } from '../useMockDataBaseForBaseLayer'
 
+//Helper function to check the validity of the product review channel
+function checkIMappedChannelIsValid(productReviewChannel: IMappedChannel): boolean {
+  if(productReviewChannel === null) return false;
+  return !(
+    productReviewChannel.eTrustedChannelRef === null || productReviewChannel.eTrustedChannelRef === "" ||
+    productReviewChannel.eTrustedLocale === null || productReviewChannel.eTrustedLocale === "" ||
+    productReviewChannel.eTrustedAccountRef === null || productReviewChannel.eTrustedAccountRef === "" ||
+    productReviewChannel.salesChannelLocale === null || productReviewChannel.salesChannelLocale === "" ||
+    productReviewChannel.salesChannelUrl === null || productReviewChannel.salesChannelUrl === "" ||
+    productReviewChannel.salesChannelName === null || productReviewChannel.salesChannelName === "" ||
+    productReviewChannel.eTrustedName === null || productReviewChannel.eTrustedName === "" ||
+    productReviewChannel.eTrustedUrl === null || productReviewChannel.eTrustedUrl === ""
+  );
+  //TODO extend the check of the attributes of the productReviewChannel with patterns
+}
 export const api = {
   getSystemInfo: () => {
     return db.data?.infoSystem
@@ -122,12 +137,13 @@ export const api = {
   },
 
   activateProductReviewForChannel: (productReviewChannel: IMappedChannel): IMappedChannel => {
-    const finded = db.data?.productReview.find(
+    if(!checkIMappedChannelIsValid(productReviewChannel)) return null as any
+    const found = db.data?.productReview.find(
       item =>
         item.eTrustedChannelRef === productReviewChannel.eTrustedChannelRef &&
         item.salesChannelRef === productReviewChannel.salesChannelRef
     )
-    if (finded) return productReviewChannel
+    if (found) return productReviewChannel
     db.data?.productReview.push(productReviewChannel)
     db.write()
 
