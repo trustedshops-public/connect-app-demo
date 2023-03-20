@@ -19,6 +19,7 @@ export function activateProductReviewForChannel(event: { payload: IMappedChannel
       'success',
       'save'
     )
+    return true;
   } catch (error) {
     setTimeout(() => {
       sendingNotification(
@@ -28,5 +29,6 @@ export function activateProductReviewForChannel(event: { payload: IMappedChannel
         'save'
       )
     }, 400)
+    return false
   }
 }
