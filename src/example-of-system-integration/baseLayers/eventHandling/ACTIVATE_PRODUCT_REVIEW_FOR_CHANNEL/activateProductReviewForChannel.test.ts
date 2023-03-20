@@ -44,12 +44,12 @@ describe('Activate Product Review For Channel', () => {
   test('Activate with partial empty payload', () => {
     const selectedImappedChannelData = getMappedChannels(TEST)[0]
     const iMappedChannel: IMappedChannel = {
-      eTrustedChannelRef: selectedImappedChannelData.eTrustedChannelRef,
+      eTrustedChannelRef: '',
       eTrustedLocale: selectedImappedChannelData.eTrustedLocale,
       eTrustedName: '',
       eTrustedUrl: selectedImappedChannelData.eTrustedUrl,
       eTrustedAccountRef: '',
-      salesChannelRef: selectedImappedChannelData.salesChannelRef,
+      salesChannelRef: '',
       salesChannelLocale: selectedImappedChannelData.salesChannelLocale,
       salesChannelName: selectedImappedChannelData.salesChannelName,
       salesChannelUrl: selectedImappedChannelData.salesChannelUrl,
@@ -58,7 +58,7 @@ describe('Activate Product Review For Channel', () => {
     expect(result).toBe(false)
   })
   test('Activate with null payload', () => {
-    const iMappedChannel: IMappedChannel = null as any
+    const iMappedChannel = null
     const result = activateProductReviewForChannel({ payload: iMappedChannel })
     expect(result).toBe(false)
   })
