@@ -41,7 +41,7 @@ jobs:
 
       - run:
           name: Run tests ...
-          command: yarn coverage
+          command: yarn run test:ci
 
       - persist_to_workspace:
           root: .

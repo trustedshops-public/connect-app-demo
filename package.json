@@ -8,6 +8,7 @@
     "lint": "eslint src/**/*.{ts,tsx} --fix",
     "format": "prettier --write src/**/*.{ts,tsx}",
     "coverage": "vitest run --coverage",
+    "test:ci": "vitest run --coverage --reporter=junit --reporter=verbose",
     "test": "vitest",
     "test:ui": "vitest --ui"
   },
