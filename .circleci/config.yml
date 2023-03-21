@@ -39,7 +39,7 @@ jobs:
           name: install dependencies
           command: |
             sudo npm install -g npm
-            yarn self-update 
+            yarn
 
       - run:
           name: Run tests ...
