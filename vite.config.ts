@@ -18,12 +18,16 @@ export default defineConfig(() => {
       environment: 'happy-dom',
       setupFiles: ['./__test__/test-setup.ts'],
       includeSource: ['src/**/*.{ts,tsx}'],
+      reporters: ['default', 'junit'],
+      outputFile: 'coverage/unit/xunit.xml',
       coverage: {
-        reporter: ['text-summary', 'text', 'html'],
+        provider: 'c8',
+        reporter: ['html-spa']
       },
       mockReset: true,
       restoreMocks: true,
       globals: true,
+      silent: true,
     },
   }
 })
