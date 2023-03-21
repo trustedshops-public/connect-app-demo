@@ -52,7 +52,7 @@ jobs:
           destination: coverage
 
       - store_test_results:
-          path: coverage/unit/xunit.xml
+          path: ./coverage/unit/xunit.xml
 
       #- ms-teams-notifier/report:
       #    webhook_url: $MS_TEAMS_WEBHOOK_URL
