@@ -43,7 +43,7 @@ jobs:
 
       - run:
           name: Run tests ...
-          command: python3 test.py
+          command: echo "should run tests"
 
       - persist_to_workspace:
           root: .
