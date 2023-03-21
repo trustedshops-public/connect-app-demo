@@ -26,7 +26,7 @@ jobs:
             # for write access to github
             # got to the project -> Project Settings -> SSH Keys -> Add User Key
             # add the fingerprint here
-            - "d0:85:60:27:a0:8c:e8:95:45:bd:c2:d2:47:7c:f3:b1"
+            - "17:3e:d4:9c:4e:d6:3b:7c:46:2c:17:a5:11:6e:24:8d"
 
       - attach_workspace:
           at: ~/project
@@ -41,7 +41,7 @@ jobs:
 
       - run:
           name: Run tests ...
-          command: echo "should run tests"
+          command: vitest --coverage
 
       - persist_to_workspace:
           root: .
@@ -54,8 +54,8 @@ jobs:
       #- store_test_results:
       #    path: Results/xunit.xml
 
-      - ms-teams-notifier/report:
-          webhook_url: $MS_TEAMS_WEBHOOK_URL
+      #- ms-teams-notifier/report:
+      #    webhook_url: $MS_TEAMS_WEBHOOK_URL
 
 workflows:
   version: 2
