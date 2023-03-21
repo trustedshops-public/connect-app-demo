@@ -10,18 +10,17 @@ setTimeout( ()=>{
   return 30000
 })
 describe('Render home page', () => {
-  test('click Open button - button text: Close connector', async () => {
-    render(<HomePageModule />)
-    fireEvent.click(screen.getByTestId('button_open'))
-    await screen.findByText('Close connector')
-    expect(screen.getByText('Close connector')).toBeInTheDocument()
-  })
   test('click Open button - should display Connector by ID "shadowRoot"', async () => {
     render(<HomePageModule />)
-    fireEvent.click(screen.getByTestId('button_open'))
-    const buttonLAbel = screen.getByTestId('button_open').getAttribute('label')
-    console.log(buttonLAbel)
+    fireEvent.click(screen.getByTestId('button_open_connector'))
     await screen.findByTestId('shadowRoot')
     expect(screen.getByTestId('shadowRoot')).toBeInTheDocument()
   })
+  test('click Open button - button text: Close connector', async () => {
+    render(<HomePageModule />)
+    fireEvent.click(screen.getByTestId('button_open_connector'))
+    await screen.findByText('Close connector')
+    expect(screen.getByText('Close connector')).toBeInTheDocument()
+  })
+
 })
