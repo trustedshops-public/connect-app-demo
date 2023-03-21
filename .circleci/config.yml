@@ -54,8 +54,8 @@ jobs:
       - store_test_results:
           path: ./coverage/unit/xunit.xml
 
-      #- ms-teams-notifier/report:
-      #    webhook_url: $MS_TEAMS_WEBHOOK_URL
+      - ms-teams-notifier/report:
+          webhook_url: $MS_TEAMS_WEBHOOK_URL
 
 workflows:
   version: 2
