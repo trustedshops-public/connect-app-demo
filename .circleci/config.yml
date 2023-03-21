@@ -48,8 +48,9 @@ jobs:
           paths: [./*/]
 
       - store_artifacts:
-          path: ./coverage/index.html
+          path: ./coverage
           destination: coverage/
+
 
       - store_test_results:
           path: ./coverage/unit/xunit.xml
