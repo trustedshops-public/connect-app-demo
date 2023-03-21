@@ -14,7 +14,15 @@ describe('Render home page', () => {
     render(<HomePageModule />)
     fireEvent.click(screen.getByTestId('button_open_connector'))
     await screen.findByTestId('shadowRoot')
-    expect(screen.getByTestId('shadowRoot')).toBeInTheDocument()
+    expect(screen.queryByTestId('shadowRoot')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByTestId('button_open_connector'))
+    expect(screen.queryByTestId('shadowRoot')).not.toBeInTheDocument()
+
+    fireEvent.click(screen.getByTestId('button_open_connector'))
+    await screen.findByTestId('shadowRoot')
+    expect(screen.queryByTestId('shadowRoot')).toBeInTheDocument()
+
   })
   test('click Open button - button text: Close connector', async () => {
     render(<HomePageModule />)
