@@ -18,7 +18,7 @@ export default defineConfig(() => {
       environment: 'happy-dom',
       setupFiles: ['./__test__/test-setup.ts'],
       includeSource: ['src/**/*.{ts,tsx}'],
-      reporters: ['default', 'junit'],
+      reporters: ['junit'],
       outputFile: 'coverage/unit/xunit.xml',
       coverage: {
         provider: 'c8',

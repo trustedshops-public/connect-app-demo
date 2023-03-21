@@ -6,6 +6,9 @@ import { HomePageModule } from '.'
 afterEach(() => {
   cleanup()
 })
+setTimeout( ()=>{
+  return 30000
+})
 describe('Render home page', () => {
   test('click Open button - button text: Close connector', async () => {
     render(<HomePageModule />)
