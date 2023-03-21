@@ -6,7 +6,7 @@ import { HomePageModule } from '.'
 afterEach(() => {
   cleanup()
 })
-setTimeout( ()=>{
+setTimeout(() => {
   return 30000
 })
 describe('Render home page', () => {
@@ -22,7 +22,6 @@ describe('Render home page', () => {
     fireEvent.click(screen.getByTestId('button_open_connector'))
     await screen.findByTestId('eTrusted-connector')
     expect(screen.queryByTestId('eTrusted-connector')).toBeInTheDocument()
-
   })
   test('click Open button - button text: Close connector', async () => {
     render(<HomePageModule />)
@@ -30,5 +29,4 @@ describe('Render home page', () => {
     await screen.findByText('Close connector')
     expect(screen.getByText('Close connector')).toBeInTheDocument()
   })
-
 })
