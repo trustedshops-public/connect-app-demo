@@ -16,4 +16,12 @@ describe('API', () => {
 
     expect(systemInfo).toBe(baseLayerData.infoSystem)
   })
+
+  test('api getLocal from the mock database should match the value from the date-config', () => {
+    renderHook(() => useMockDataBaseForBaseLayer())
+
+    const systemInfo = api.getLocale()
+
+    expect(systemInfo).toBe(baseLayerData.locale)
+  })
 })
