@@ -52,7 +52,7 @@ export const ConnectingTrustedShop: FC = () => {
     <div className="ts-flex-1 ts-gap-2">
       <Button
         id="open"
-        test-id="button_open"
+        data-testid="button_open"
         label={`${isShowConnectorPlugin ? 'Close' : 'Open'} connector`}
         theme={ButtonThemes.Secondary}
         onClick={toggleShowConnectorPlugin}
