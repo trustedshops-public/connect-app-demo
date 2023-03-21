@@ -13,15 +13,15 @@ describe('Render home page', () => {
   test('click Open button - should display Connector by ID "shadowRoot"', async () => {
     render(<HomePageModule />)
     fireEvent.click(screen.getByTestId('button_open_connector'))
-    await screen.findByTestId('shadowRoot')
-    expect(screen.queryByTestId('shadowRoot')).toBeInTheDocument()
+    await screen.findByTestId('eTrusted-connector')
+    expect(screen.queryByTestId('eTrusted-connector')).toBeInTheDocument()
 
     fireEvent.click(screen.getByTestId('button_open_connector'))
-    expect(screen.queryByTestId('shadowRoot')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('eTrusted-connector')).not.toBeInTheDocument()
 
     fireEvent.click(screen.getByTestId('button_open_connector'))
-    await screen.findByTestId('shadowRoot')
-    expect(screen.queryByTestId('shadowRoot')).toBeInTheDocument()
+    await screen.findByTestId('eTrusted-connector')
+    expect(screen.queryByTestId('eTrusted-connector')).toBeInTheDocument()
 
   })
   test('click Open button - button text: Close connector', async () => {
