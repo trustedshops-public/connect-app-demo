@@ -23,7 +23,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "17:3e:d4:9c:4e:d6:3b:7c:46:2c:17:a5:11:6e:24:8d"
+            - '17:3e:d4:9c:4e:d6:3b:7c:46:2c:17:a5:11:6e:24:8d'
 
       - attach_workspace:
           at: ~/project
@@ -47,7 +47,6 @@ jobs:
       - store_artifacts:
           path: ./coverage
           destination: coverage/
-
 
       - store_test_results:
           path: ./coverage/unit/xunit.xml
@@ -75,4 +74,4 @@ workflows:
             branches:
               only:
                 #- main
-                -  feature/integration-test-libs
+                - feature/integration-test-libs
