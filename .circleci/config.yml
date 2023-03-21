@@ -11,18 +11,13 @@ jobs:
 
     steps:
       - checkout
-
       - persist_to_workspace:
           root: ~/project
           paths: [.]
 
   test:
     docker:
-      - image: cimg/python:3.9.7
-
-    environment:
-      STAGE: << pipeline.parameters.stage >>
-
+      - image: cimg/node:16.8.0
     resource_class: small
 
     steps:
