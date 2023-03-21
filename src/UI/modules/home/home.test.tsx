@@ -19,6 +19,8 @@ describe('Render home page', () => {
   test('click Open button - should display Connector by ID "shadowRoot"', async () => {
     render(<HomePageModule />)
     fireEvent.click(screen.getByTestId('button_open'))
+    const buttonLAbel = screen.getByTestId('button_open').getAttribute('label')
+    console.log(buttonLAbel)
     await screen.findByTestId('shadowRoot')
     expect(screen.getByTestId('shadowRoot')).toBeInTheDocument()
   })
