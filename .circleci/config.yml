@@ -37,9 +37,7 @@ jobs:
             cp .circleci/ssh_config ~/.ssh/config
       - run:
           name: install dependencies
-          command: |
-            sudo npm install -g npm
-            yarn
+          command: yarn
 
       - run:
           name: Run tests ...
