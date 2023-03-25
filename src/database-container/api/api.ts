@@ -1,8 +1,4 @@
-import {
-  IMappedChannel,
-  ITrustbadge,
-  IWidgets,
-} from '@/example-of-system-integration/baseLayers/types'
+import { IMappedChannel, ITrustbadge, IWidgets } from '@/example-of-system-integration/baseLayers/types'
 import { baseLayerData, BaseLayerDataType, Estimatepayload } from '../data-config'
 import { db } from '../useMockDataBaseForBaseLayer'
 
@@ -150,16 +146,12 @@ export const api = {
     salesChannelRef: string
     eTrustedChannelRef: string
   }) => {
-    const found = db.data?.productReview.find(
-      item =>
-        item.eTrustedChannelRef === payload.eTrustedChannelRef &&
-        item.salesChannelRef === payload.salesChannelRef
-    )
-    if(found)
-      db.data?.productReview.forEach(
-        (item, index) => {
-          if (item === found) db.data?.productReview.splice(index, 1)
-        })
+    db.data?.productReview.forEach(
+      (item, index) => {
+        if (item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+          item.salesChannelRef === payload.salesChannelRef)
+          db.data?.productReview.splice(index, 1)
+      })
     db.write()
   },
 
