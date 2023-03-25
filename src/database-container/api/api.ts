@@ -150,16 +150,16 @@ export const api = {
     salesChannelRef: string
     eTrustedChannelRef: string
   }) => {
-    const felteredProductReview = db.data?.productReview.filter(
+    const found = db.data?.productReview.find(
       item =>
-        item.eTrustedChannelRef !== payload.eTrustedChannelRef &&
-        item.salesChannelRef !== payload.salesChannelRef
+        item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+        item.salesChannelRef === payload.salesChannelRef
     )
-
-    db.data = {
-      ...(db.data as BaseLayerDataType),
-      productReview: felteredProductReview as IMappedChannel[],
-    }
+    if(found)
+      db.data?.productReview.forEach(
+        (item, index) => {
+          if (item === found) db.data?.productReview.splice(index, 1)
+        })
     db.write()
   },
 

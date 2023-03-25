@@ -1,19 +1,34 @@
-import { afterEach, beforeEach, describe, expect, test } from 'vitest'
-import { cleanup, renderHook } from '@testing-library/preact'
-import { getMappedChannels } from '@/example-of-system-integration/baseLayers/testData/getMappedChannels'
-import { TEST } from '@/example-of-system-integration/baseLayers/baseLayer'
+import { beforeEach, describe, test } from 'vitest'
+import { IMappedChannel } from '@/example-of-system-integration/baseLayers/types'
 import {
   activateProductReviewForChannel,
   deactivateProductReviewForChannel
 } from '@/example-of-system-integration/baseLayers/eventHandling'
-import { IMappedChannel } from '@/example-of-system-integration/baseLayers/types'
+import { afterEach, expect } from 'vitest'
+import { cleanup, renderHook } from '@testing-library/preact'
+import { getMappedChannels } from '@/example-of-system-integration/baseLayers/testData/getMappedChannels'
+import { TEST } from '@/example-of-system-integration/baseLayers/baseLayer'
 import { db, useMockDataBaseForBaseLayer } from '@/database-container/useMockDataBaseForBaseLayer'
 
 const selectedImappedChannelData = getMappedChannels(TEST)[0]
 
+
 beforeEach(()=>{
   renderHook(() => useMockDataBaseForBaseLayer())
+  const iMappedChannel: IMappedChannel = {
+    eTrustedChannelRef: selectedImappedChannelData.eTrustedChannelRef,
+    eTrustedLocale: selectedImappedChannelData.eTrustedLocale,
+    eTrustedName: selectedImappedChannelData.eTrustedName,
+    eTrustedUrl: selectedImappedChannelData.eTrustedUrl,
+    eTrustedAccountRef: selectedImappedChannelData.eTrustedAccountRef,
+    salesChannelRef: selectedImappedChannelData.salesChannelRef,
+    salesChannelLocale: selectedImappedChannelData.salesChannelLocale,
+    salesChannelName: selectedImappedChannelData.salesChannelName,
+    salesChannelUrl: selectedImappedChannelData.salesChannelUrl,
+  }
+  activateProductReviewForChannel({payload: iMappedChannel})
 })
+
 afterEach(() => {
   const iMappedChannel: IMappedChannel = {
     eTrustedChannelRef: selectedImappedChannelData.eTrustedChannelRef,
@@ -30,8 +45,8 @@ afterEach(() => {
   cleanup()
 })
 
-describe('Activate Product Review For Channel', () => {
-  test('Activate with Correct payload', () => {
+describe('Deactivate product review for a channel', ()=>{
+  test('Deactivate with Correct payload', () => {
     const iMappedChannel: IMappedChannel = {
       eTrustedChannelRef: selectedImappedChannelData.eTrustedChannelRef,
       eTrustedLocale: selectedImappedChannelData.eTrustedLocale,
@@ -43,11 +58,10 @@ describe('Activate Product Review For Channel', () => {
       salesChannelName: selectedImappedChannelData.salesChannelName,
       salesChannelUrl: selectedImappedChannelData.salesChannelUrl,
     }
-    const result = activateProductReviewForChannel({ payload: iMappedChannel })
-    expect(result).toBe(true)
-    expect(db.data?.productReview.length).toBe(1)
+    deactivateProductReviewForChannel({ payload: iMappedChannel })
+    expect(db.data?.productReview.length).toBe(0)
   })
-  test('Activate with empty payload', () => {
+  test('Deactivate with empty payload', () => {
     const iMappedChannel: IMappedChannel = {
       eTrustedChannelRef: '',
       eTrustedLocale: '',
@@ -59,11 +73,10 @@ describe('Activate Product Review For Channel', () => {
       salesChannelName: '',
       salesChannelUrl: '',
     }
-    const result = activateProductReviewForChannel({ payload: iMappedChannel })
-    expect(result).toBe(false)
-    expect(db.data?.productReview.length).toBe(0)
+    deactivateProductReviewForChannel({ payload: iMappedChannel })
+    expect(db.data?.productReview.length).toBe(1)
   })
-  test('Activate with partial empty payload - Necessary data missing', () => {
+  test('Deactivate with partial empty payload - Necessary data missing', () => {
     const iMappedChannel: IMappedChannel = {
       eTrustedChannelRef: '',
       eTrustedLocale: selectedImappedChannelData.eTrustedLocale,
@@ -75,11 +88,10 @@ describe('Activate Product Review For Channel', () => {
       salesChannelName: selectedImappedChannelData.salesChannelName,
       salesChannelUrl: selectedImappedChannelData.salesChannelUrl,
     }
-    const result = activateProductReviewForChannel({ payload: iMappedChannel })
-    expect(result).toBe(false)
-    expect(db.data?.productReview.length).toBe(0)
+    deactivateProductReviewForChannel({ payload: iMappedChannel })
+    expect(db.data?.productReview.length).toBe(1)
   })
-  test('Activate with partial empty payload - Necessary data existing', () => {
+  test('Deactivate with partial empty payload - Necessary data existing', () => {
     const iMappedChannel: IMappedChannel = {
       eTrustedChannelRef: selectedImappedChannelData.eTrustedChannelRef,
       eTrustedLocale: selectedImappedChannelData.eTrustedLocale,
@@ -91,15 +103,12 @@ describe('Activate Product Review For Channel', () => {
       salesChannelName: selectedImappedChannelData.salesChannelName,
       salesChannelUrl: '',
     }
-    const result = activateProductReviewForChannel({ payload: iMappedChannel })
-    expect(result).toBe(true)
-    expect(db.data?.productReview.length).toBe(1)
-  })
-  test('Activate with null payload', () => {
-    const iMappedChannel = null
-    const result = activateProductReviewForChannel({ payload: iMappedChannel })
-    expect(result).toBe(false)
+    deactivateProductReviewForChannel({ payload: iMappedChannel })
     expect(db.data?.productReview.length).toBe(0)
   })
-  //TODO test with patterns
+  test('Deactivate with null payload', () => {
+    const iMappedChannel = null as any
+    deactivateProductReviewForChannel({ payload: iMappedChannel })
+    expect(db.data?.productReview.length).toBe(1)
+  })
 })
