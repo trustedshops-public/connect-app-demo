@@ -6,14 +6,24 @@ import { sendingNotification } from '../NOTIFICATION'
 export function exportPreviousOrder(event: { payload: any }) {
   BaseLayerLogger('Demo: EXPORT_PREVIOUS_ORDER. Payload:', event.payload)
 
-  sendingNotification(
-    EVENTS.ACTIVATE_PRODUCT_REVIEW_FOR_CHANNEL,
-    'USE ESTIMATED DELIVERY DATE FOR CHANNEL NOT SAVED',
-    'error',
-    'exportTimeout'
-  )
-  dispatchAction({
-    action: EVENTS.SET_EXPORT_PREVIOUS_ORDER,
-    payload: event.payload,
-  })
+  try {
+    sendingNotification(
+      EVENTS.SET_EXPORT_PREVIOUS_ORDER,
+      'SET EXPORT PREVIOUS ORDER',
+      'success',
+      'export'
+    )
+    dispatchAction({
+      action: EVENTS.SET_EXPORT_PREVIOUS_ORDER,
+      payload: event.payload,
+    })
+  } catch (error) {
+    sendingNotification(
+      EVENTS.SET_EXPORT_PREVIOUS_ORDER,
+      'SET EXPORT PREVIOUS ORDER - failed',
+      'error',
+      'export'
+    )
+  }
+
 }
