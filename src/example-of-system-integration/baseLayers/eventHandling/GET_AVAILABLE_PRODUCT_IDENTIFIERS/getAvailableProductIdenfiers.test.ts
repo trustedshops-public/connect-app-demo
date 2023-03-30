@@ -6,12 +6,9 @@ import { db, useMockDataBaseForBaseLayer } from '@/database-container/useMockDat
 import { getProductIdentifiers } from '@/example-of-system-integration/baseLayers/testData/getProductIdentifiers'
 import { TEST } from '@/example-of-system-integration/baseLayers/baseLayer'
 type ProductIdentifier = {id: string; name: string}
-beforeEach(()=>{
+beforeEach(() => {
   renderHook(useMockDataBaseForBaseLayer)
-  getProductIdentifiers(TEST).forEach((item ) => {
-    const productIdentifier: ProductIdentifier = {id: item.id, name: item.name}
-    db.data?.productIdentifiers.push(productIdentifier)
-  })
+  db.data?.productIdentifiers.push(...getProductIdentifiers(TEST))
 })
 describe('Available product identifiers', ()=>{
   test('get product identifiers from event', ()=>{
