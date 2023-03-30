@@ -14,7 +14,7 @@ const selectedImappedChannelData = getMappedChannels(TEST)[0]
 
 
 beforeEach(()=>{
-  renderHook(() => useMockDataBaseForBaseLayer())
+  renderHook(useMockDataBaseForBaseLayer)
   const iMappedChannel: IMappedChannel = {
     eTrustedChannelRef: selectedImappedChannelData.eTrustedChannelRef,
     eTrustedLocale: selectedImappedChannelData.eTrustedLocale,
