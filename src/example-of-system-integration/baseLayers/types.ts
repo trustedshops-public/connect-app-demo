@@ -1,5 +1,7 @@
 export interface ITrustbadge {
   id: string
+  eTrustedChannelRef: string
+  salesChannelRef: string
   children: ITrustbadgeChildren[]
 }
 export interface ITrustbadgeChildren {

@@ -6,6 +6,8 @@ export const getTrustbadge = (id: string, defaultEnv?: string | number): ITrustb
     case DEV:
       return {
         id,
+        eTrustedChannelRef: id,
+        salesChannelRef: 'id',
         children: [
           {
             tag: 'script',
@@ -80,6 +82,8 @@ export const getTrustbadge = (id: string, defaultEnv?: string | number): ITrustb
     case TEST: //value for 'test'
       return {
         id,
+        eTrustedChannelRef: id,
+        salesChannelRef: 'id',
         children: [
           {
             tag: 'script',
@@ -152,7 +156,7 @@ export const getTrustbadge = (id: string, defaultEnv?: string | number): ITrustb
         ],
       }
     case 'no_trustbadge_config':
-      return { id, children: [] }
+      return { id, children: [], eTrustedChannelRef: id, salesChannelRef: 'id' }
     default:
       return null
   }
