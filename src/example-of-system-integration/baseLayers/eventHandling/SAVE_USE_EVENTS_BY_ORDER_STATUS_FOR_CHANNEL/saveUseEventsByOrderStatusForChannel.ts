@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { api } from '@/database-container/api/api'
+import { Estimatepayload } from '@/database-container/data-config'
 import { dispatchAction, EVENTS } from '@/example-of-system-integration/eventsLib'
 import { BaseLayerLogger } from '@/utils/BaseLayerLogger'
 import { sendingNotification } from '../NOTIFICATION'
 
-export function saveUseEventsByOrderStatusForChannel(event: { payload: any }) {
+export function saveUseEventsByOrderStatusForChannel(event: { payload: Estimatepayload }) {
   try {
     BaseLayerLogger('Demo: SAVE_USE_EVENTS_BY_ORDER_STATUS_FOR_CHANNEL. Payload:', event.payload)
 
