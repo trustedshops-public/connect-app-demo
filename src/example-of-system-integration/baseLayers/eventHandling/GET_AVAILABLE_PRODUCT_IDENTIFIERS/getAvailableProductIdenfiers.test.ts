@@ -14,7 +14,7 @@ beforeEach(()=>{
   })
 })
 describe('Available product identifiers', ()=>{
-  test('get product identifiers', ()=>{
+  test('get product identifiers from event', ()=>{
     let returnedProductIdentifier = [] as Array<ProductIdentifier>
     const unsubscribe = registerEvents({
       // register the SET_AVAILABLE_PRODUCT_IDENTIFIERS event. This is the event that dispatches the exportPreviousOrder function
