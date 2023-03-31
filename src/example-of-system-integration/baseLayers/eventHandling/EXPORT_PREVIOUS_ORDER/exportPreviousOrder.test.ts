@@ -1,15 +1,10 @@
 
 import { EVENTS, registerEvents } from '@/example-of-system-integration/eventsLib'
 import { describe, expect, test } from 'vitest'
+import { NotificationType } from '../../types'
 import { exportPreviousOrder } from './exportPreviousOrder'
 
 type ExportPayload = { id: string; numberOfDays: number; salesChannelRef: string }
-type NotificationType = {
-  event: string
-  message: string
-  status: 'error' | 'success'
-  type: string
-}
 
 describe('Export Previous Order', () => {
   test('returned payload should match the one sent', () => {
