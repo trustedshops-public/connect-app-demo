@@ -38,6 +38,7 @@ export const api = {
     db.read()
     db.data = { ...(db.data as BaseLayerDataType), mappedChannels: channels }
     db.write()
+    return channels
   },
 
   getTrustbadge: (id: string): Nullable<ITrustbadge> => {
