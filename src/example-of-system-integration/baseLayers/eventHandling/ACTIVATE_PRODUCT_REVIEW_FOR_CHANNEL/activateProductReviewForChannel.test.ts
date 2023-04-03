@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { cleanup, renderHook } from '@testing-library/preact'
-import { getMappedChannels } from '@/example-of-system-integration/baseLayers/testData/getMappedChannels'
+import { getMappedChannelsData } from '@/example-of-system-integration/baseLayers/testData/getMappedChannelsData'
 import { TEST } from '@/example-of-system-integration/baseLayers/baseLayer'
 import {
   activateProductReviewForChannel,
@@ -9,7 +9,7 @@ import {
 import { IMappedChannel } from '@/example-of-system-integration/baseLayers/types'
 import { db, useMockDataBaseForBaseLayer } from '@/database-container/useMockDataBaseForBaseLayer'
 
-const selectedImappedChannelData = getMappedChannels(TEST)[0]
+const selectedImappedChannelData = getMappedChannelsData(TEST)[0]
 
 beforeEach(()=>{
   renderHook(() => useMockDataBaseForBaseLayer())

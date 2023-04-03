@@ -1,7 +1,7 @@
 import { DEV, TEST } from '../baseLayer'
 import { IMappedChannel } from '../types'
 
-export const getMappedChannels = (defaultEnv?: string): IMappedChannel[] => {
+export const getMappedChannelsData = (defaultEnv?: string): IMappedChannel[] => {
   switch (process.env.mappedChannels || defaultEnv) {
     case DEV: // value for 'development'
       return [

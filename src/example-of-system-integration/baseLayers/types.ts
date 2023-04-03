@@ -63,3 +63,15 @@ export interface IMappedChannel {
   salesChannelName: string
   salesChannelUrl: string
 }
+
+export type InfoSystemType = {
+  nameOfSystem: string
+  versionNumberOfSystem: string
+  versionNumberOfPlugin: string
+  allowsEstimatedDeliveryDate?: boolean
+  allowsEventsByOrderStatus?: boolean
+  allowsSendReviewInvitesForPreviousOrders?: boolean
+  allowsSendReviewInvitesForProduct?: boolean
+  allowsEditIntegrationCode?: boolean
+  allowsSupportWidgets?: boolean
+}

@@ -5,7 +5,7 @@ import { renderHook } from '@testing-library/preact'
 import { db, useMockDataBaseForBaseLayer } from '@/database-container/useMockDataBaseForBaseLayer'
 import { TEST } from '@/example-of-system-integration/baseLayers/baseLayer'
 import { IMappedChannel } from '../../types'
-import { getMappedChannels } from '../../testData/getMappedChannels'
+import { getMappedChannelsData } from '../../testData/getMappedChannelsData'
 
 beforeEach(() => {
   renderHook(useMockDataBaseForBaseLayer)
@@ -14,7 +14,7 @@ describe('Save mapped channels', () => {
   test('SET_MAPPED_CHANNELS payload should match with testMappedChannels', () => {
     let returnedMappedChannels = [] as IMappedChannel[]
 
-    const testMappedChannels = getMappedChannels(TEST)
+    const testMappedChannels = getMappedChannelsData(TEST)
     const unsubscribe = registerEvents({
       [EVENTS.SET_MAPPED_CHANNELS]: function (event: { payload: IMappedChannel[] }) {
         returnedMappedChannels.push(...event.payload)

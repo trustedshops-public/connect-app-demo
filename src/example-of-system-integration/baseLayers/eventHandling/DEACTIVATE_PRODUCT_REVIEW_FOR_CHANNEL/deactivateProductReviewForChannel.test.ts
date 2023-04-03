@@ -6,11 +6,11 @@ import {
 } from '@/example-of-system-integration/baseLayers/eventHandling'
 import { afterEach, expect } from 'vitest'
 import { cleanup, renderHook } from '@testing-library/preact'
-import { getMappedChannels } from '@/example-of-system-integration/baseLayers/testData/getMappedChannels'
+import { getMappedChannelsData } from '@/example-of-system-integration/baseLayers/testData/getMappedChannelsData'
 import { TEST } from '@/example-of-system-integration/baseLayers/baseLayer'
 import { db, useMockDataBaseForBaseLayer } from '@/database-container/useMockDataBaseForBaseLayer'
 
-const selectedImappedChannelData = getMappedChannels(TEST)[0]
+const selectedImappedChannelData = getMappedChannelsData(TEST)[0]
 
 
 beforeEach(()=>{

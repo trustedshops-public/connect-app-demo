@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, test } from 'vitest'
 import { cleanup } from '@testing-library/preact'
-import { getMappedChannels } from '@/example-of-system-integration/baseLayers/testData/getMappedChannels'
+import { getMappedChannelsData } from '@/example-of-system-integration/baseLayers/testData/getMappedChannelsData'
 import { DEV, TEST } from '@/example-of-system-integration/baseLayers/baseLayer'
 import { getInformationOfSystem } from '@/example-of-system-integration/baseLayers/testData/getInformationOfSystem'
 
@@ -10,7 +10,7 @@ afterEach(()=>{
 describe("should test the call of correct data", ()=>{
   test("test validity of the Mapped channels", ()=>{
     function helperExpectationIMappedChannelData(stage: string) {
-      const selectedIMappedChannelData = getMappedChannels(stage)[0]
+      const selectedIMappedChannelData = getMappedChannelsData(stage)[0]
       expect(selectedIMappedChannelData).toHaveProperty('eTrustedChannelRef')
       expect(selectedIMappedChannelData).toHaveProperty('eTrustedLocale')
       expect(selectedIMappedChannelData).toHaveProperty('eTrustedName')
@@ -24,9 +24,9 @@ describe("should test the call of correct data", ()=>{
     helperExpectationIMappedChannelData(TEST)
     helperExpectationIMappedChannelData(DEV)
     helperExpectationIMappedChannelData('1_shop_mapped')
-    let selectedIMappedChannelData = getMappedChannels('none')
+    let selectedIMappedChannelData = getMappedChannelsData('none')
     expect(selectedIMappedChannelData).toHaveLength(0)
-    selectedIMappedChannelData = getMappedChannels('randomvalue')
+    selectedIMappedChannelData = getMappedChannelsData('randomvalue')
     expect(selectedIMappedChannelData).toHaveLength(0)
 
   })
