@@ -42,6 +42,10 @@ export interface IWidgetsChildren {
   }
 }
 
+export interface IWidgetLocation {
+  id: string
+  name: string
+}
 export interface IMappedChannel {
   eTrustedChannelRef: string
   eTrustedLocale: string
