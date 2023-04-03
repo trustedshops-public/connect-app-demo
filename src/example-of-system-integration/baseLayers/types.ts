@@ -46,6 +46,12 @@ export interface IWidgetLocation {
   id: string
   name: string
 }
+
+export type NotificationType =  {
+  status: string,
+  message: string
+}
+
 export interface IMappedChannel {
   eTrustedChannelRef: string
   eTrustedLocale: string
