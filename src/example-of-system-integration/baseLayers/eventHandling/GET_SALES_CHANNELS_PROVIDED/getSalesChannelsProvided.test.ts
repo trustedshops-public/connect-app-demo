@@ -5,6 +5,7 @@ import { renderHook } from '@testing-library/preact'
 import { db, useMockDataBaseForBaseLayer } from '@/database-container/useMockDataBaseForBaseLayer'
 import { getSalesChannels } from '@/example-of-system-integration/baseLayers/testData/getSalesChannels'
 import { TEST } from '@/example-of-system-integration/baseLayers/baseLayer'
+import { BaseLayerDataType } from '@/database-container/data-config'
 type SalesChannelType = {
   id: string
   name: string
@@ -14,7 +15,7 @@ type SalesChannelType = {
 describe('Get sales channel', () => {
   test('Get sales channel with database is initialized', () => {
     renderHook(useMockDataBaseForBaseLayer)
-    getSalesChannels(TEST).forEach(item=>db.data?.salesChannels.push(item))
+    getSalesChannels(TEST).forEach(item=>db.data?.salesChannels.push({... item} as SalesChannelType))
     let salesChannels : Array<SalesChannelType> = {} as Array<SalesChannelType>
     const unsubscribe = registerEvents({
       [EVENTS.SET_SALES_CHANNELS_PROVIDED]: function (event: {payload: Array<SalesChannelType>}) {
@@ -29,7 +30,7 @@ describe('Get sales channel', () => {
     unsubscribe()
   })
   test('Get sales channel with database not initialized', () => {
-    db.data = {}
+    db.data = {} as BaseLayerDataType
     let salesChannels : Array<SalesChannelType> = {} as Array<SalesChannelType>
     const unsubscribe = registerEvents({
       [EVENTS.SET_SALES_CHANNELS_PROVIDED]: function (event: {payload: Array<SalesChannelType>}) {

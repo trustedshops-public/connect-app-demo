@@ -201,13 +201,13 @@ export const api = {
   },
 
   getUseEventsByOrderStatusForChannel: (payload: Estimatepayload) => {
-    const findedItemById = db.data?.useEventsByOrderStatusForChannel.find(
-      item =>
+    const foundItem = db.data?.useEstimatedDeliveryDateForChannel.filter(
+      item=>
         item.eTrustedChannelRef === payload.eTrustedChannelRef &&
         item.salesChannelRef === payload.salesChannelRef
     )
 
-    if (findedItemById) return findedItemById
+    if (foundItem) return foundItem[0]
 
     const defaultData = {
       ...payload,

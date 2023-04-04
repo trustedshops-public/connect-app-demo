@@ -46,7 +46,7 @@ describe('Get product review for Channel', () => {
 
   test('get Product Review for channel using an invalid payload', () => {
     let mappedChannel: IMappedChannel = {} as IMappedChannel
-    db.data?.productReview.forEach((item,index)=>db.data?.productReview.splice(index, 1))
+    db.data?.productReview.forEach((_item,index)=>db.data?.productReview.splice(index, 1))
     const unsubscribe = registerEvents({
       [EVENTS.SET_PRODUCT_REVIEW_FOR_CHANNEL]: function (event: {
         payload: IMappedChannel
