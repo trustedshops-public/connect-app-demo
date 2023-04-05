@@ -16,13 +16,13 @@ describe('Render home page', () => {
     render(<HomePageModule />)
     // Open connector
     fireEvent.click(screen.getByTestId('button_open_connector'))
-    await screen.findByTestId('shadowRoot')
-    expect(screen.queryByTestId('shadowRoot')).toBeInTheDocument()
+    await screen.findByTestId('eTrusted-connector')
+    expect(screen.queryByTestId('eTrusted-connector')).toBeInTheDocument()
 
     //Close connector
     fireEvent.click(screen.getByTestId('button_open_connector'))
     await screen.findByText('Open connector')
-    expect(screen.queryByTestId('shadowRoot')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('eTrusted-connector')).not.toBeInTheDocument()
 
     // Open connector again
     /*
