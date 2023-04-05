@@ -4,8 +4,8 @@ import { saveWidgetChanges } from '@/example-of-system-integration/baseLayers/ev
 import { renderHook } from '@testing-library/preact'
 import { db, useMockDataBaseForBaseLayer } from '@/database-container/useMockDataBaseForBaseLayer'
 import { TEST } from '@/example-of-system-integration/baseLayers/baseLayer'
-import { getWidgets } from '../../testData/getWidgets'
-import { IWidgets } from '../../types'
+import { getWidgets } from '../../../example-of-system-integration/baseLayers/testData/getWidgets'
+import { IWidgets } from '@/example-of-system-integration/baseLayers/types'
 
 beforeEach(() => {
   renderHook(useMockDataBaseForBaseLayer)

@@ -4,8 +4,8 @@ import { saveTrustbadgeConfiguration } from '@/example-of-system-integration/bas
 import { renderHook } from '@testing-library/preact'
 import { db, useMockDataBaseForBaseLayer } from '@/database-container/useMockDataBaseForBaseLayer'
 import { TEST } from '@/example-of-system-integration/baseLayers/baseLayer'
-import { ITrustbadge } from '../../types'
-import { getTrustbadge } from '../../testData/getTrustbadgeMock'
+import { ITrustbadge } from '@/example-of-system-integration/baseLayers/types'
+import { getTrustbadge } from '@/example-of-system-integration/baseLayers/testData/getTrustbadgeMock'
 
 beforeEach(() => {
   renderHook(useMockDataBaseForBaseLayer)

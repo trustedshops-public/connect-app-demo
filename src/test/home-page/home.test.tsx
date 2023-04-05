@@ -1,8 +1,8 @@
 import { h } from 'preact'
 import { afterEach, describe, expect, test } from 'vitest'
 import { cleanup, fireEvent, render, renderHook, screen } from '@testing-library/preact'
-import { HomePageModule } from '.'
 import { useMockDataBaseForBaseLayer } from '@/database-container/useMockDataBaseForBaseLayer'
+import { HomePageModule } from '@/UI/modules/home'
 
 afterEach(() => {
   cleanup()

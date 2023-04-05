@@ -3,7 +3,7 @@ import { EVENTS, registerEvents } from '@/example-of-system-integration/eventsLi
 import { saveCredentials } from '@/example-of-system-integration/baseLayers/eventHandling'
 import { renderHook } from '@testing-library/preact'
 import { useMockDataBaseForBaseLayer } from '@/database-container/useMockDataBaseForBaseLayer'
-import { NotificationType } from '../../types'
+import { NotificationType } from '@/example-of-system-integration/baseLayers/types'
 
 beforeEach(() => {
   renderHook(useMockDataBaseForBaseLayer)

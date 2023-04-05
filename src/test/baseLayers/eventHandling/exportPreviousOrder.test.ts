@@ -1,8 +1,7 @@
-
+import { exportPreviousOrder } from '@/example-of-system-integration/baseLayers/eventHandling'
+import { NotificationType } from '@/example-of-system-integration/baseLayers/types'
 import { EVENTS, registerEvents } from '@/example-of-system-integration/eventsLib'
 import { describe, expect, test } from 'vitest'
-import { NotificationType } from '../../types'
-import { exportPreviousOrder } from './exportPreviousOrder'
 
 type ExportPayload = { id: string; numberOfDays: number; salesChannelRef: string }
 

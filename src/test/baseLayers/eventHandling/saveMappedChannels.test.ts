@@ -4,8 +4,8 @@ import { saveMappedChannels } from '@/example-of-system-integration/baseLayers/e
 import { renderHook } from '@testing-library/preact'
 import { db, useMockDataBaseForBaseLayer } from '@/database-container/useMockDataBaseForBaseLayer'
 import { TEST } from '@/example-of-system-integration/baseLayers/baseLayer'
-import { IMappedChannel } from '../../types'
-import { getMappedChannelsData } from '../../testData/getMappedChannelsData'
+import { IMappedChannel } from '@/example-of-system-integration/baseLayers/types'
+import { getMappedChannelsData } from '@/example-of-system-integration/baseLayers/testData/getMappedChannelsData'
 
 beforeEach(() => {
   renderHook(useMockDataBaseForBaseLayer)

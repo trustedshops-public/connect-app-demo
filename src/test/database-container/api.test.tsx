@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, test } from 'vitest'
 import { cleanup, renderHook } from '@testing-library/preact'
-import { useMockDataBaseForBaseLayer } from '../useMockDataBaseForBaseLayer'
-import { baseLayerData } from '../data-config'
-import { api } from './api'
+import { api } from '@/database-container/api/api'
+import { baseLayerData } from '@/database-container/data-config'
+import { useMockDataBaseForBaseLayer } from '@/database-container/useMockDataBaseForBaseLayer'
 
 afterEach(() => {
   cleanup()
