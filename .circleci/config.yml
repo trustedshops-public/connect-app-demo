@@ -23,9 +23,6 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            # for write access to github
-            # got to the project -> Project Settings -> SSH Keys -> Add User Key
-            # add the fingerprint here
             - "17:3e:d4:9c:4e:d6:3b:7c:46:2c:17:a5:11:6e:24:8d"
 
       - attach_workspace:
@@ -40,7 +37,7 @@ jobs:
           command: yarn
 
       - run:
-          name: Run tests ...
+          name: Run tests
           command: yarn run test:ci
 
       - persist_to_workspace:
@@ -70,7 +67,6 @@ workflows:
       - test:
           requires:
             - checkout
-
           context:
             - test-automation-qa
           filters:
