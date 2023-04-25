@@ -1,0 +1,77 @@
+---
+version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.2.4
+  ms-teams-notifier: oktapodia/ms-teams-notifier@1.0.0
+
+jobs:
+  checkout:
+    docker:
+      - image: cimg/node:18.0.0
+
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: ~/project
+          paths: [.]
+
+  test:
+    docker:
+      - image: cimg/node:18.0.0
+    resource_class: small
+
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - '17:3e:d4:9c:4e:d6:3b:7c:46:2c:17:a5:11:6e:24:8d'
+
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Copy ssh config
+          command: |
+            mkdir ~/.ssh/
+            cp .circleci/ssh_config ~/.ssh/config
+      - run:
+          name: install dependencies
+          command: yarn
+
+      - run:
+          name: Run tests
+          command: yarn run test:ci
+
+      - persist_to_workspace:
+          root: .
+          paths: [./*/]
+
+      - store_artifacts:
+          path: ./coverage
+          destination: coverage/
+
+      - store_test_results:
+          path: ./coverage/unit/xunit.xml
+
+      - ms-teams-notifier/report:
+          webhook_url: $MS_TEAMS_WEBHOOK_URL
+
+workflows:
+  version: 2
+
+  test:
+    jobs:
+      - checkout:
+          filters:
+            tags:
+              only: /.*/
+      - test:
+          requires:
+            - checkout
+          context:
+            - test-automation-qa
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only:
+                #- main
+                - feature/integration-test-libs
