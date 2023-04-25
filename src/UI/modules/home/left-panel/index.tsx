@@ -1,6 +1,6 @@
 import { api } from '@/database-container/api/api'
 import { InfoSystemType, LocalesTypes } from '@/database-container/data-config'
-import { db } from '@/database-container/DatabaseContainer'
+import { db } from '@/database-container/useMockDataBaseForBaseLayer'
 import { dispatchAction, EVENTS } from '@/example-of-system-integration/eventsLib'
 import { Option, Select } from '@/UI/components/controls/dropdown'
 import { EditIcon } from '@/UI/components/layouts/icons/EditIcon'
