@@ -1,5 +1,7 @@
 export interface ITrustbadge {
   id: string
+  eTrustedChannelRef: string
+  salesChannelRef: string
   children: ITrustbadgeChildren[]
 }
 export interface ITrustbadgeChildren {
@@ -40,6 +42,16 @@ export interface IWidgetsChildren {
   }
 }
 
+export interface IWidgetLocation {
+  id: string
+  name: string
+}
+
+export type NotificationType =  {
+  status: string,
+  message: string
+}
+
 export interface IMappedChannel {
   eTrustedChannelRef: string
   eTrustedLocale: string
@@ -50,4 +62,16 @@ export interface IMappedChannel {
   salesChannelLocale: string
   salesChannelName: string
   salesChannelUrl: string
+}
+
+export type InfoSystemType = {
+  nameOfSystem: string
+  versionNumberOfSystem: string
+  versionNumberOfPlugin: string
+  allowsEstimatedDeliveryDate?: boolean
+  allowsEventsByOrderStatus?: boolean
+  allowsSendReviewInvitesForPreviousOrders?: boolean
+  allowsSendReviewInvitesForProduct?: boolean
+  allowsEditIntegrationCode?: boolean
+  allowsSupportWidgets?: boolean
 }

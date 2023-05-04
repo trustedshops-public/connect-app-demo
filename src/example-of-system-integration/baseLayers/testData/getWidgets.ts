@@ -5,6 +5,7 @@ export const getWidgets = (defaultEnv?: string): IWidgets => {
   switch (process.env.widgets || defaultEnv) {
     case DEV: // value for development
       return {
+        eTrustedChannelRef: '', id: '', salesChannelRef: '',
         children: [
           {
             tag: 'script',
@@ -109,10 +110,11 @@ export const getWidgets = (defaultEnv?: string): IWidgets => {
               },
             ],
           },
-        ],
+        ]
       }
     case TEST: // value for 'test'
       return {
+        eTrustedChannelRef: '', id: '', salesChannelRef: '',
         children: [
           {
             tag: 'script',
@@ -165,11 +167,12 @@ export const getWidgets = (defaultEnv?: string): IWidgets => {
               },
             ],
           },
-        ],
+        ]
       }
     case 'widgets_mapped':
       //Used by automated test - do not change unless intentionally changing the test. See /tests/ folder for details.
       return {
+        eTrustedChannelRef: '', id: '', salesChannelRef: '',
         children: [
           {
             tag: 'script',
@@ -225,10 +228,11 @@ export const getWidgets = (defaultEnv?: string): IWidgets => {
               },
             ],
           },
-        ],
+        ]
       }
     case 'no_widgets':
       return {
+        eTrustedChannelRef: '', id: '', salesChannelRef: '',
         children: [
           {
             tag: 'script',
@@ -246,9 +250,9 @@ export const getWidgets = (defaultEnv?: string): IWidgets => {
             },
             children: [],
           },
-        ],
+        ]
       }
     default:
-      return { children: [] }
+      return { eTrustedChannelRef: '', id: '', salesChannelRef: '', children: [] }
   }
 }

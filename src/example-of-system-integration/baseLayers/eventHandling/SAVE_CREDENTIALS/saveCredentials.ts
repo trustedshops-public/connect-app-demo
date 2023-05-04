@@ -7,13 +7,15 @@ export function saveCredentials(event: { payload: { clientId: string; clientSecr
   BaseLayerLogger('Demo: SAVE_CREDENTIALS. Payload:', event.payload)
 
   try {
+    if (!event.payload.clientId.length || !event.payload.clientSecret.length) {
+      throw new Error('CREDENTIALS NOT SAVED')
+    }
     api.postCredentials(event.payload)
-    setTimeout(() => {
-      sendingNotification(EVENTS.SAVE_CREDENTIALS, 'CREDENTIALS SAVED', 'success', 'save')
-    }, 400)
+    sendingNotification(EVENTS.SAVE_CREDENTIALS, 'CREDENTIALS SAVED', 'success', 'save')
   } catch (error) {
-    setTimeout(() => {
-      sendingNotification(EVENTS.SAVE_CREDENTIALS, 'CREDENTIALS NOT SAVED', 'error', 'save')
-    }, 400)
+    let message
+    if (error instanceof Error) message = error.message
+    else message = String(error)
+    sendingNotification(EVENTS.SAVE_CREDENTIALS, message, 'error', 'save')
   }
 }

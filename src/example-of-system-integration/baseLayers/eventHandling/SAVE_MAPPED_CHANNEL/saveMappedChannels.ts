@@ -8,11 +8,11 @@ export function saveMappedChannels(event: { payload: IMappedChannel[] }) {
   try {
     BaseLayerLogger('Demo: SAVE_MAPPED_CHANNEL. Payload:', event.payload)
 
-    api.postMappedChannels(event.payload)
+    const savedMappedChannelsToAPI = api.postMappedChannels(event.payload)
 
     dispatchAction({
       action: EVENTS.SET_MAPPED_CHANNELS,
-      payload: event.payload,
+      payload: savedMappedChannelsToAPI,
     })
     sendingNotification(EVENTS.SET_MAPPED_CHANNELS, 'MAPPED CHANNELS SAVED', 'success', 'save')
   } catch (error) {

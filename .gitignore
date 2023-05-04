@@ -11,3 +11,4 @@ demo-build
 src/tests/results/
 src/tests/resources/scripts/local-env.sh
 __pycache__
+coverage

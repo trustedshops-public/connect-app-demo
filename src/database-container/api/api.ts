@@ -1,10 +1,16 @@
-import {
-  IMappedChannel,
-  ITrustbadge,
-  IWidgets,
-} from '@/example-of-system-integration/baseLayers/types'
+import { IMappedChannel, ITrustbadge, IWidgets } from '@/example-of-system-integration/baseLayers/types'
 import { baseLayerData, BaseLayerDataType, Estimatepayload } from '../data-config'
-import { db } from '../DatabaseContainer'
+import { db } from '../useMockDataBaseForBaseLayer'
+
+//Helper function to check the validity of the product review channel
+function checkIMappedChannelIsValid(productReviewChannel: IMappedChannel): boolean {
+  return Boolean(
+    productReviewChannel &&
+      productReviewChannel.eTrustedChannelRef &&
+      productReviewChannel.salesChannelRef
+  )
+  //TODO extend the check of the attributes of the productReviewChannel with patterns
+}
 
 export const api = {
   getSystemInfo: () => {
@@ -32,6 +38,7 @@ export const api = {
     db.read()
     db.data = { ...(db.data as BaseLayerDataType), mappedChannels: channels }
     db.write()
+    return channels
   },
 
   getTrustbadge: (id: string): Nullable<ITrustbadge> => {
@@ -121,13 +128,16 @@ export const api = {
     )
   },
 
-  activateProductReviewForChannel: (productReviewChannel: IMappedChannel): IMappedChannel => {
-    const finded = db.data?.productReview.find(
+  activateProductReviewForChannel: (
+    productReviewChannel: IMappedChannel
+  ): IMappedChannel | null => {
+    if (!checkIMappedChannelIsValid(productReviewChannel)) return null
+    const found = db.data?.productReview.find(
       item =>
         item.eTrustedChannelRef === productReviewChannel.eTrustedChannelRef &&
         item.salesChannelRef === productReviewChannel.salesChannelRef
     )
-    if (finded) return productReviewChannel
+    if (found) return productReviewChannel
     db.data?.productReview.push(productReviewChannel)
     db.write()
 
@@ -137,16 +147,12 @@ export const api = {
     salesChannelRef: string
     eTrustedChannelRef: string
   }) => {
-    const felteredProductReview = db.data?.productReview.filter(
-      item =>
-        item.eTrustedChannelRef !== payload.eTrustedChannelRef &&
-        item.salesChannelRef !== payload.salesChannelRef
-    )
-
-    db.data = {
-      ...(db.data as BaseLayerDataType),
-      productReview: felteredProductReview as IMappedChannel[],
-    }
+    db.data?.productReview.forEach(
+      (item, index) => {
+        if (item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+          item.salesChannelRef === payload.salesChannelRef)
+          db.data?.productReview.splice(index, 1)
+      })
     db.write()
   },
 
@@ -195,13 +201,13 @@ export const api = {
   },
 
   getUseEventsByOrderStatusForChannel: (payload: Estimatepayload) => {
-    const findedItemById = db.data?.useEventsByOrderStatusForChannel.find(
-      item =>
+    const foundItem = db.data?.useEstimatedDeliveryDateForChannel.filter(
+      item=>
         item.eTrustedChannelRef === payload.eTrustedChannelRef &&
         item.salesChannelRef === payload.salesChannelRef
     )
 
-    if (findedItemById) return findedItemById
+    if (foundItem) return foundItem[0]
 
     const defaultData = {
       ...payload,
