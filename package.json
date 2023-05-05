@@ -42,7 +42,7 @@
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jest": "27.1.6",
     "eslint-plugin-prettier": "4.2.1",
-    "happy-dom": "^8.9.0",
+    "happy-dom": "^9.0.0",
     "husky": "8.0.3",
     "lint-staged": "13.1.0",
     "postcss": "8.4.23",
