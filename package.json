@@ -22,7 +22,7 @@
     "preact": "10.11.3",
     "preact-router": "4.1.0",
     "react-hook-form": "7.42.1",
-    "yup": "0.32.11",
+    "yup": "1.1.1",
     "zustand": "4.3.8"
   },
   "devDependencies": {
