@@ -5,6 +5,13 @@ import EnvironmentPlugin from 'vite-plugin-environment'
 // https://vitejs.dev/config/
 export default defineConfig(() => {
   return {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+    ],
     plugins: [preact(), EnvironmentPlugin('all', { prefix: '' })],
     resolve: {
       alias: {
@@ -22,7 +29,7 @@ export default defineConfig(() => {
       outputFile: 'coverage/unit/xunit.xml',
       coverage: {
         provider: 'c8',
-        reporter: ['html-spa']
+        reporter: ['html-spa'],
       },
       mockReset: true,
       restoreMocks: true,
