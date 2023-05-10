@@ -15,6 +15,7 @@ export const InjectScript = memo(({ src }: { src: string }) => {
 
     script.src = src
     script.async = true
+    script.type = "module"
 
     document.body.appendChild(script)
 
@@ -34,8 +35,7 @@ export const ConnectingTrustedShop: FC = () => {
   const [isShowConnectorPlugin, setIsShowConnectorPlugin] = useState(false)
   const [unsub, setunsub] = useState<{ usub: any | null } | undefined>({ usub: null })
 
-  const connectorScript =
-    'https://static-app.connect-qa.trustedshops.com/connector/connector.umd.js'
+  const connectorScript = '/connector.umd.js'
 
   const toggleShowConnectorPlugin = () => {
     if (isShowConnectorPlugin) {
