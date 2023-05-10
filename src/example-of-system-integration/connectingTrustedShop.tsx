@@ -35,7 +35,7 @@ export const ConnectingTrustedShop: FC = () => {
   const [isShowConnectorPlugin, setIsShowConnectorPlugin] = useState(false)
   const [unsub, setunsub] = useState<{ usub: any | null } | undefined>({ usub: null })
 
-  const connectorScript = '../../public/connector.umd.js'
+  const connectorScript = '/connector.umd.js'
 
   const toggleShowConnectorPlugin = () => {
     if (isShowConnectorPlugin) {
