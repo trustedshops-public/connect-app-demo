@@ -36,10 +36,6 @@ workflows:
   test:
     jobs:
       - test:
-          requires:
-            - checkout
-          context:
-            - test-automation-qa
           filters:
             tags:
               only: /.*/
