@@ -18,8 +18,8 @@ export const baseLayerData: BaseLayerDataType = {
     allowsSupportWidgets: true,
   },
   credentials: {
-    clientId: 'beae12faf8c9__NewGen',
-    clientSecret: 'e07080c4-1818-407b-a3ae-8c30af2b7e48',
+    clientId: '',
+    clientSecret: '',
   },
   salesChannels: [
     {
@@ -116,7 +116,6 @@ export type LocalesTypes =
   | 'en-GB'
   | 'de-DE'
   | 'es-ES'
-  | 'fr-FR'
   | 'fr-FR'
   | 'it-IT'
   | 'nl-NL'
