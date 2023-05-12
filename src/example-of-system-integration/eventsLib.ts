@@ -1,5 +1,5 @@
 if (!window.eventsLib) {
-  const eventsLib = '../../public/eventsLib.js'
+  const eventsLib = require('../../public/eventsLib.js')
   window.eventsLib = eventsLib
 }
 
