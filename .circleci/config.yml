@@ -40,4 +40,5 @@ workflows:
             tags:
               only: /.*/
             branches:
-              only: /.*/
+              only:
+                - qa
