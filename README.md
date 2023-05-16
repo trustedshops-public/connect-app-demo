@@ -11,18 +11,18 @@ This demo App is part of Trusted Shop´s SDK for building plugins based on our n
 
 ### Download example and install dependencies
 - Clone this repository:
-```
+```sh
 git clone git@github.com:trustedshops-public/connect-app-demo.git
 ```
 - Install npm dependencies:
-```
+```sh
 cd connect-app-demo
 npm install
 or
 yarn install
 ```
 - then
-```
+```sh
 yarn run dev
 or
 npm run dev
@@ -38,7 +38,7 @@ Please write to our support team (productintegration@trustedshops.com) to reques
 ### Configure your setup
 You may change the pre-configuration to your needs.
 To do so you want to edit the configuration stated inside baseLayerData in file src/database-container/data-config.ts:
-```
+```ts
 locale: 'en-GB',
 infoSystem: {
     nameOfSystem: 'Demo-app',
@@ -57,7 +57,7 @@ Further readings: https://developers.etrusted.com/solutions/newgen-sdk/event_ref
 
 For the demo two sales channels are pre-configured. These represent the frontends of a shop.
 You can change them by editing 
-```
+```ts
 salesChannels: [
     {
       id: 'shop-sales-channel-1',
