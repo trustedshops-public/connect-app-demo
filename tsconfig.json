@@ -19,11 +19,17 @@
     "jsx": "react",
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
-    "suppressImplicitAnyIndexErrors": true,
+    "noImplicitAny": true,
     "baseUrl": ".",
     "paths": {
-        "@/*": ["./src/*"],
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "public/fonts/connector.umd.js", "__test__", "test/database-container/test-exaples", "test/database-container/useMockDataBaeForBL.test.ts"]
+  "include": [
+    "src",
+    "public/fonts/connector.umd.js",
+    "__test__",
+    "test/database-container/test-exaples",
+    "test/database-container/useMockDataBaeForBL.test.ts"
+  ]
 }

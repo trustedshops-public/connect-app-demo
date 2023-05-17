@@ -6,7 +6,7 @@ import { baseLayerData, BaseLayerDataType } from '@/database-container/data-conf
 //import { DBLogger } from '@/utils/DBLogger'
 
 const adapter = new LocalStorage<BaseLayerDataType>('database')
-export const db = new LowSync<BaseLayerDataType>(adapter)
+export const db = new LowSync<BaseLayerDataType>(adapter, baseLayerData)
 
 export const useMockDataBaseForBaseLayer = () => {
   useEffect(() => {
