@@ -698,10 +698,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.2.0.tgz#e33da33171ac4eba79b9cfe30b68a4f1561e74ec"
   integrity sha512-3iD2jaCCziTx04uudpJKwe39QxXgSUnpxXSvRQjRvHPxFQfmfP4NXIm/NURVeNlTCc+ru4WqjYGTmpXrW9uMlw==
 
-"@types/node@18.16.12":
-  version "18.16.12"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.12.tgz#f11e19055c5b3daeb79dc6eb7ccdd3d036313034"
-  integrity sha512-tIRrjbY9C277MOfP8M3zjMIhtMlUJ6YVqkGgLjz+74jVsdf4/UjC6Hku4+1N0BS0qyC0JAS6tJLUk9H6JUKviQ==
+"@types/node@18.16.13":
+  version "18.16.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.13.tgz#984c48275c718b5b3e47371938f3cff482790598"
+  integrity sha512-uZRomboV1vBL61EBXneL4j9/hEn+1Yqa4LQdpGrKmXFyJmVfWc9JV9+yb2AlnOnuaDnb2PDO3hC6/LKmzJxP1A==
 
 "@types/semver@^7.3.12":
   version "7.3.13"
@@ -2190,9 +2190,9 @@ grapheme-splitter@^1.0.4:
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
 happy-dom@^9.0.0:
-  version "9.18.3"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-9.18.3.tgz#ad3fdf812ae5c08e4af1baae98719d4d8cf2edc4"
-  integrity sha512-b7iMGYeIXvUryNultA0AHEVU0FPpb2djJ/xSVlMDfP7HG4z7FomdqkCEpWtSv1zDL+t1gRUoBbpqFCoUBvjYtg==
+  version "9.19.2"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-9.19.2.tgz#d1280913f5b22c7fe14f6bee08c4a9533464a068"
+  integrity sha512-WBey64FErn5niCLddcjXxkgDk6burN/5doiJpMUQXpgEG3TUJdbygJV1bzcj1Ey+pz+0QGCZH1pwe24uPW+WnQ==
   dependencies:
     css.escape "^1.5.1"
     entities "^4.5.0"
@@ -3931,7 +3931,18 @@ vite-plugin-environment@1.1.3:
   resolved "https://registry.yarnpkg.com/vite-plugin-environment/-/vite-plugin-environment-1.1.3.tgz#d01a04abb2f69730a4866c9c9db51d3dab74645b"
   integrity sha512-9LBhB0lx+2lXVBEWxFZC+WO7PKEyE/ykJ7EPWCq95NEcCpblxamTbs5Dm3DLBGzwODpJMEnzQywJU8fw6XGGGA==
 
-vite@4.3.7, "vite@^3.0.0 || ^4.0.0":
+vite@4.3.8:
+  version "4.3.8"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-4.3.8.tgz#70cd6a294ab52d7fb8f37f5bc63d117dd19e9918"
+  integrity sha512-uYB8PwN7hbMrf4j1xzGDk/lqjsZvCDbt/JC5dyfxc19Pg8kRm14LinK/uq+HSLNswZEoKmweGdtpbnxRtrAXiQ==
+  dependencies:
+    esbuild "^0.17.5"
+    postcss "^8.4.23"
+    rollup "^3.21.0"
+  optionalDependencies:
+    fsevents "~2.3.2"
+
+"vite@^3.0.0 || ^4.0.0":
   version "4.3.7"
   resolved "https://registry.yarnpkg.com/vite/-/vite-4.3.7.tgz#04f98ab0f4689490545b2f6fa0515e95072bb298"
   integrity sha512-MTIFpbIm9v7Hh5b0wSBgkcWzSBz7SAa6K/cBTwS4kUiQJfQLFlZZRJRQgqunCVzhTPCk674tW+0Qaqh3Q00dBg==
