@@ -1,6 +1,8 @@
 ## Connect App Demo
 [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/trustedshops-public/connect-app-demo/blob/main/LICENSE)
-
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=trustedshops-public_connect-app-demo&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=trustedshops-public_connect-app-demo)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=trustedshops-public_connect-app-demo&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=trustedshops-public_connect-app-demo)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=trustedshops-public_connect-app-demo&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=trustedshops-public_connect-app-demo)
 ## Public Documentation
 This demo App is part of Trusted Shop´s SDK for building plugins based on our new plattform and architecture. You can find our detailed documentation publicly available [here](https://developers.etrusted.com/solutions/newgen-sdk/introduction.html). Please follow these instructions to build your own plugin to connect eTrusted products with a shopsoftwaresystem.
 
