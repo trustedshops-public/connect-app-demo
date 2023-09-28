@@ -5,6 +5,7 @@ import {
   deactivateProductReviewForChannel,
   disconnected,
   exportPreviousOrder,
+  getAvailableOrderStatuses,
   getAvailableProductIdenfiers,
   getCredentialsProvided,
   getInformationOfSystem,
@@ -16,12 +17,14 @@ import {
   getTrustbadgeConfigurationProvided,
   getUseEstimatedDeliveryDateForChannel,
   getUseEventsByOrderStatusForChannel,
+  getUsedOrderStatuses,
   getWidgetProvided,
   saveCredentials,
   saveMappedChannels,
   saveTrustbadgeConfiguration,
   saveUseEstimatedDeliveryDateForChannel,
   saveUseEventsByOrderStatusForChannel,
+  saveUsedOrderStatus,
   saveWidgetChanges,
 } from './eventHandling'
 
@@ -64,5 +67,11 @@ export const baseLayer = (): any => {
     [EVENTS.EXPORT_PREVIOUS_ORDER]: exportPreviousOrder,
     [EVENTS.DISCONNECTED]: disconnected,
     [EVENTS.ERROR]: (error: any) => console.log('eventError', error),
+
+    //v2
+
+    [EVENTS.GET_AVAILABLE_ORDER_STATUSES]: getAvailableOrderStatuses,
+    [EVENTS.GET_USED_ORDER_STATUSES]: getUsedOrderStatuses,
+    [EVENTS.SAVE_USED_ORDER_STATUSES]: saveUsedOrderStatus,
   })
 }

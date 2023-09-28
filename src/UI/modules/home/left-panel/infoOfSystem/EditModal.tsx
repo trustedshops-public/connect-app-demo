@@ -7,6 +7,7 @@ import Input from '@/UI/components/controls/input'
 import Switch from '@/UI/components/controls/switch'
 import { api } from '@/database-container/api/api'
 import { dispatchAction, EVENTS } from '@/example-of-system-integration/eventsLib'
+import { Option, Select } from '@/UI/components/controls/dropdown'
 
 interface Props {
   modalIsOpen: boolean
@@ -16,7 +17,6 @@ interface Props {
 
 const EditInfoModal: FC<Props> = ({ setOpenModal, modalIsOpen, infoOfSystem }) => {
   const [infoOfSystemModified, setInfoOfSystemModified] = useState<InfoSystemType>(infoOfSystem)
-  console.log('file: EditModal.tsx:17  infoOfSystemModified:', infoOfSystemModified)
 
   useEffect(() => {
     if (!infoOfSystem) return
@@ -89,9 +89,9 @@ const EditInfoModal: FC<Props> = ({ setOpenModal, modalIsOpen, infoOfSystem }) =
                       </p>
                     </td>
                     <td className="ts-px-6 ts-py-2 ts-w-[220px]">
-                      {(key === 'versionNumberOfSystem' ||
-                        key === 'nameOfSystem' ||
-                        key === 'versionNumberOfPlugin') && (
+                      {['versionNumberOfSystem', 'nameOfSystem', 'versionNumberOfPlugin'].includes(
+                        key,
+                      ) && (
                         <Input
                           type="text"
                           value={value as string}
@@ -100,17 +100,39 @@ const EditInfoModal: FC<Props> = ({ setOpenModal, modalIsOpen, infoOfSystem }) =
                           onChange={val => changeInfoValues(key, val)}
                         />
                       )}
-                      {key !== 'versionNumberOfSystem' &&
-                        key !== 'nameOfSystem' &&
-                        key !== 'versionNumberOfPlugin' && (
-                          <Switch
-                            id={'trustBadge'}
-                            isToggle={value as boolean}
-                            setIsToggle={val => changeInfoValues(key, val)}
-                            labelOn={'true'}
-                            labelOff={'false'}
-                          />
-                        )}
+                      {![
+                        'versionNumberOfSystem',
+                        'nameOfSystem',
+                        'versionNumberOfPlugin',
+                        'useVersionNumberOfConnector',
+                      ].includes(key) && (
+                        <Switch
+                          id={'trustBadge'}
+                          isToggle={value as boolean}
+                          setIsToggle={val => changeInfoValues(key, val)}
+                          labelOn={'true'}
+                          labelOff={'false'}
+                        />
+                      )}
+                      {key === 'useVersionNumberOfConnector' && (
+                        <div className="ts-text-default ts-text-sm">
+                          <Select placeholder="version" defaultValue={(value as string) || '1.0'}>
+                            {['1.0', '2.0'].map(item => (
+                              <Option
+                                key={item}
+                                value={item}
+                                changeSelectedOption={(val: string) =>
+                                  changeInfoValues(key, val as string)
+                                }
+                              >
+                                <p className="ts-m-2 ts-text-default ts-font-normal ts-text-sm">
+                                  {item}
+                                </p>
+                              </Option>
+                            ))}
+                          </Select>
+                        </div>
+                      )}
                     </td>
                   </tr>
                 ))}

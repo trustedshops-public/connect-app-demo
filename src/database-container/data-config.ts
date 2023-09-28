@@ -16,6 +16,7 @@ export const baseLayerData: BaseLayerDataType = {
     allowsSendReviewInvitesForProduct: true,
     allowsEditIntegrationCode: true,
     allowsSupportWidgets: true,
+    useVersionNumberOfConnector: '2.0',
   },
   credentials: {
     clientId: '',
@@ -80,6 +81,16 @@ export const baseLayerData: BaseLayerDataType = {
   productReview: [],
   useEstimatedDeliveryDateForChannel: [],
   useEventsByOrderStatusForChannel: [],
+  availableOrderStatuses: [
+    { name: 'Awaiting Payment', ID: '1' },
+    { name: 'Payment accepted', ID: '2' },
+    { name: 'Processing in progress', ID: '3' },
+    { name: 'Shipped', ID: '4' },
+    { name: 'Delivered', ID: '5' },
+    { name: 'Canceled', ID: '6' },
+    { name: 'Refunded', ID: '7' },
+  ],
+  usedOrderStatuses: [],
 }
 
 export type BaseLayerDataType = {
@@ -103,6 +114,17 @@ export type BaseLayerDataType = {
   productReview: Array<IMappedChannel>
   useEstimatedDeliveryDateForChannel: Array<Estimatepayload>
   useEventsByOrderStatusForChannel: Array<Estimatepayload>
+  availableOrderStatuses: Array<{ ID: string; name: string; event_type?: string }>
+  usedOrderStatuses: Array<OrderStatusType>
+}
+
+export type OrderStatusType = {
+  eTrustedChannelRef: string
+  salesChannelRef: string
+  activeStatus: {
+    product?: { name: string; ID: string; event_type?: string }
+    service?: { name: string; ID: string; event_type?: string }
+  }
 }
 
 export type Estimatepayload = {
@@ -132,4 +154,5 @@ export type InfoSystemType = {
   allowsSendReviewInvitesForProduct?: boolean
   allowsEditIntegrationCode?: boolean
   allowsSupportWidgets?: boolean
+  useVersionNumberOfConnector?: string
 }

@@ -9,6 +9,7 @@ import {
   Estimatepayload,
   InfoSystemType,
   LocalesTypes,
+  OrderStatusType,
 } from '../data-config'
 import { db } from '../useMockDataBaseForBaseLayer'
 
@@ -17,7 +18,7 @@ function checkIMappedChannelIsValid(productReviewChannel: IMappedChannel): boole
   return Boolean(
     productReviewChannel &&
       productReviewChannel.eTrustedChannelRef &&
-      productReviewChannel.salesChannelRef
+      productReviewChannel.salesChannelRef,
   )
   //TODO extend the check of the attributes of the productReviewChannel with patterns
 }
@@ -93,7 +94,7 @@ export const api = {
       db.data?.widgets.find(
         item =>
           (item.id === payload.id || item.eTrustedChannelRef === payload.eTrustedChannelRef) &&
-          item.salesChannelRef === payload.salesChannelRef
+          item.salesChannelRef === payload.salesChannelRef,
       ) || null
     )
   },
@@ -109,7 +110,7 @@ export const api = {
     const finded = db.data?.widgets.find(
       item =>
         (item.id === widgets.id || item.eTrustedChannelRef === widgets.eTrustedChannelRef) &&
-        item.salesChannelRef === widgets.salesChannelRef
+        item.salesChannelRef === widgets.salesChannelRef,
     )
 
     const updatedWidgetArray = finded
@@ -141,19 +142,19 @@ export const api = {
       db.data?.productReview.find(
         item =>
           item.eTrustedChannelRef === payload.eTrustedChannelRef &&
-          item.salesChannelRef === payload.salesChannelRef
+          item.salesChannelRef === payload.salesChannelRef,
       ) || null
     )
   },
 
   activateProductReviewForChannel: (
-    productReviewChannel: IMappedChannel
+    productReviewChannel: IMappedChannel,
   ): IMappedChannel | null => {
     if (!checkIMappedChannelIsValid(productReviewChannel)) return null
     const found = db.data?.productReview.find(
       item =>
         item.eTrustedChannelRef === productReviewChannel.eTrustedChannelRef &&
-        item.salesChannelRef === productReviewChannel.salesChannelRef
+        item.salesChannelRef === productReviewChannel.salesChannelRef,
     )
     if (found) return productReviewChannel
     db.data?.productReview.push(productReviewChannel)
@@ -179,7 +180,7 @@ export const api = {
     const findedItemById = db.data?.useEstimatedDeliveryDateForChannel.find(
       item =>
         item.eTrustedChannelRef === payload.eTrustedChannelRef &&
-        item.salesChannelRef === payload.salesChannelRef
+        item.salesChannelRef === payload.salesChannelRef,
     )
 
     if (findedItemById) return findedItemById
@@ -196,7 +197,7 @@ export const api = {
     const findedItemById = db.data?.useEstimatedDeliveryDateForChannel.find(
       item =>
         item.eTrustedChannelRef === payload.eTrustedChannelRef &&
-        item.salesChannelRef === payload.salesChannelRef
+        item.salesChannelRef === payload.salesChannelRef,
     )
 
     const updatedUseEstimatedDeliveryDateForChannelArray = findedItemById
@@ -223,7 +224,7 @@ export const api = {
     const foundItem = db.data?.useEstimatedDeliveryDateForChannel.filter(
       item =>
         item.eTrustedChannelRef === payload.eTrustedChannelRef &&
-        item.salesChannelRef === payload.salesChannelRef
+        item.salesChannelRef === payload.salesChannelRef,
     )
 
     if (foundItem) return foundItem[0]
@@ -241,7 +242,7 @@ export const api = {
     const findedItemById = db.data?.useEventsByOrderStatusForChannel.find(
       item =>
         item.eTrustedChannelRef === payload.eTrustedChannelRef &&
-        item.salesChannelRef === payload.salesChannelRef
+        item.salesChannelRef === payload.salesChannelRef,
     )
 
     const updateduseEventsByOrderStatusForChannelArray = findedItemById
@@ -267,5 +268,54 @@ export const api = {
   disconnect: () => {
     db.data = { ...baseLayerData }
     db.write()
+  },
+
+  //v2
+  getOrderStatuses: (): Array<{ ID: string; name: string; event_type?: string }> => {
+    return db.data?.availableOrderStatuses || []
+  },
+
+  getUsedOrderStatuses: (payload: Estimatepayload): OrderStatusType => {
+    const foundItem = db.data?.usedOrderStatuses?.find(
+      item =>
+        item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+        item.salesChannelRef === payload.salesChannelRef,
+    )
+    console.log('🚀 ~ file: api.ts:284 ~ foundItem:', foundItem)
+
+    const defaultData = {
+      ...payload,
+      activeStatus: {},
+    }
+    if (!foundItem) return defaultData
+    // db.data?.usedOrderStatuses.push()
+    // db.write()
+    return foundItem
+  },
+  putUsedOrderStatus: (payload: OrderStatusType) => {
+    const findedItemById = db.data?.usedOrderStatuses.find(
+      item =>
+        item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+        item.salesChannelRef === payload.salesChannelRef,
+    )
+
+    const updateduseEventsByOrderStatusForChannelArray = findedItemById
+      ? db.data?.usedOrderStatuses.map(item => {
+          if (
+            item.eTrustedChannelRef === payload.eTrustedChannelRef &&
+            item.salesChannelRef === payload.salesChannelRef
+          ) {
+            return payload
+          }
+          return item
+        })
+      : [...(db.data?.usedOrderStatuses as []), payload]
+    db.data = {
+      ...(db.data as BaseLayerDataType),
+      usedOrderStatuses: updateduseEventsByOrderStatusForChannelArray as [],
+    }
+    db.write()
+
+    return payload
   },
 }
