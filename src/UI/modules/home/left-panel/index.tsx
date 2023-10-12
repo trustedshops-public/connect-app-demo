@@ -20,7 +20,6 @@ export const LeftPanel: FC = () => {
   }, [modalIsOpen])
 
   const setSelectedLocale = (lng: LocalesTypes) => {
-    console.log('file: index.tsx:21  setSelectedLocale  lng:', lng)
     api.putLocale(lng)
     dispatchAction({
       action: EVENTS.SET_LOCALE,

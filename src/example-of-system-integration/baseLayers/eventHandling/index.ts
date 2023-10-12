@@ -20,6 +20,9 @@ import { saveTrustbadgeConfiguration } from './SAVE_TRUSTBADGE_CONFIGURATION/sav
 import { saveUseEstimatedDeliveryDateForChannel } from './SAVE_USE_ESTIMATED_DELIVERY_DATE_FOR_CHANNEL/saveUseEstimatedDeliveryDateForChannel'
 import { saveUseEventsByOrderStatusForChannel } from './SAVE_USE_EVENTS_BY_ORDER_STATUS_FOR_CHANNEL/saveUseEventsByOrderStatusForChannel'
 import { saveWidgetChanges } from './SAVE_WIDGET_CHANGES/saveWidgetChanges'
+import { getAvailableOrderStatuses } from './GET_AVAILABLE_ORDER_STATUSES/getAvailableOrderStatuses'
+import { getUsedOrderStatuses } from './GET_USED_ORDER_STATUSES/getUsedOrderStaruses'
+import { saveUsedOrderStatus } from './SAVE_USED_ORDER_STATUSES/saveUsedOrderStatus'
 
 export {
   getLocale,
@@ -44,4 +47,7 @@ export {
   saveUseEventsByOrderStatusForChannel,
   exportPreviousOrder,
   disconnected,
+  getAvailableOrderStatuses,
+  getUsedOrderStatuses,
+  saveUsedOrderStatus,
 }

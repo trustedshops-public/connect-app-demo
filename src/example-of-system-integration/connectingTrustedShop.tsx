@@ -15,7 +15,7 @@ export const InjectScript = memo(({ src }: { src: string }) => {
 
     script.src = src
     script.async = true
-    script.type = "module"
+    script.type = 'module'
 
     document.body.appendChild(script)
 

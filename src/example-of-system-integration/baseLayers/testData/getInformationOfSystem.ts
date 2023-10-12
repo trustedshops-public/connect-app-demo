@@ -12,6 +12,10 @@ export const getInformationOfSystem = (
         allowsEstimatedDeliveryDate: true,
         allowsEventsByOrderStatus: true,
         allowsSendReviewInvitesForPreviousOrders: true,
+        allowsSendReviewInvitesForProduct: true,
+        allowsEditIntegrationCode: true,
+        allowsSupportWidgets: true,
+        useVersionNumberOfConnector: '2.0',
       }
     case TEST: //value for 'test'
       return {
