@@ -285,7 +285,10 @@ export const api = {
 
     const defaultData = {
       ...payload,
-      activeStatus: {},
+      activeStatus: {
+        product: { name: 'checkout', ID: 'checkout', event_type: 'checkout' },
+        service: { name: 'checkout', ID: 'checkout', event_type: 'checkout' },
+      },
     }
     if (!foundItem) return defaultData
     // db.data?.usedOrderStatuses.push()
